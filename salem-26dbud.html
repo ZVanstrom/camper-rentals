@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Salem 26DBUD | Red River Camper Co.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a3a2f;
+            --accent: #d97706;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; background: white;
+            padding: 1rem 2rem; display: flex; justify-content: space-between;
+            align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 100;
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta { background: var(--accent); color: white !important; padding: 0.5rem 1.25rem; border-radius: 6px; }
+
+        /* Hero */
+        .camper-hero {
+            padding: 8rem 2rem 4rem; background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%);
+            color: white;
+        }
+        .camper-hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .camper-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 0.5rem; }
+        .camper-hero .year { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; }
+        .camper-hero p { opacity: 0.9; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .hero-image { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .price-tag { background: var(--accent); display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 1.25rem; font-weight: 600; }
+
+        /* Content */
+        section { padding: 4rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem; color: var(--primary); }
+
+        /* Specs */
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .spec-card { background: var(--light); padding: 1.5rem; border-radius: 12px; text-align: center; }
+        .spec-card .label { color: var(--gray); font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .spec-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+
+        /* Features */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .feature-category h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--dark); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+        .feature-category ul { list-style: none; }
+        .feature-category li { padding: 0.5rem 0; color: var(--gray); display: flex; align-items: center; gap: 0.5rem; }
+        .feature-category li::before { content: "✓"; color: var(--accent); font-weight: bold; }
+
+        /* Booking */
+        .booking-section { background: var(--light); }
+        .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .booking-info h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+        .booking-info p { color: var(--gray); margin-bottom: 1rem; }
+        .booking-info ul { list-style: none; margin-bottom: 1.5rem; }
+        .booking-info li { padding: 0.5rem 0; color: var(--dark); }
+        .booking-calendar { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .calendar-placeholder { text-align: center; padding: 3rem; border: 2px dashed var(--gray); border-radius: 8px; color: var(--gray); }
+        .book-btn { display: inline-block; background: var(--accent); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin-top: 1rem; }
+        .book-btn:hover { background: #b45309; }
+
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 3rem 2rem; text-align: center; }
+        footer a { color: var(--accent); text-decoration: none; }
+        .contact-info { margin-bottom: 1.5rem; }
+        .contact-info a { margin: 0 1rem; }
+
+        @media (max-width: 768px) {
+            .camper-hero-content, .booking-container { grid-template-columns: 1fr; }
+            .camper-hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Red River Camper Co.</a>
+        <ul class="nav-links">
+            <li><a href="index.html#campers">Our Campers</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#location">Location</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="#booking" class="nav-cta">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <section class="camper-hero">
+        <div class="camper-hero-content">
+            <div>
+                <p class="year">2025 Model</p>
+                <h1>Salem 26DBUD</h1>
+                <p>The perfect family camper with double-over-double bunks and a private master bedroom. Sleeps up to 8 people comfortably with an outdoor kitchen for those beautiful Kentucky evenings.</p>
+                <div class="price-tag">Starting at $150/night</div>
+            </div>
+            <div class="hero-image">
+                <img src="https://assets-cdn.interactcp.com/meyersrvsuperstores/unit_photo/imgh_800x600-wm_meyersrvsuperstores_com-m0909202409480359/unit_photo_202409090248035969411440.jpg" alt="2025 Salem 26DBUD">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Sleeps</div>
+                    <div class="value">8</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Length</div>
+                    <div class="value">33 ft</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Dry Weight</div>
+                    <div class="value">6,923 lbs</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Fresh Water</div>
+                    <div class="value">49 gal</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Gray Water</div>
+                    <div class="value">65 gal</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Black Water</div>
+                    <div class="value">32 gal</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Features & Amenities</h2>
+            <div class="features-grid">
+                <div class="feature-category">
+                    <h3>Sleeping</h3>
+                    <ul>
+                        <li>Queen master bedroom</li>
+                        <li>Double-over-double bunks</li>
+                        <li>Convertible dinette bed</li>
+                        <li>Privacy curtains</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Kitchen</h3>
+                    <ul>
+                        <li>3-burner gas stove</li>
+                        <li>Microwave oven</li>
+                        <li>10 cu ft refrigerator</li>
+                        <li>Outdoor kitchen</li>
+                        <li>Double basin sink</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Bathroom</h3>
+                    <ul>
+                        <li>Full bathroom</li>
+                        <li>Porcelain toilet</li>
+                        <li>Shower with skylight</li>
+                        <li>Medicine cabinet</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Comfort</h3>
+                    <ul>
+                        <li>Dual entry doors</li>
+                        <li>A/C (15,000 BTU)</li>
+                        <li>Furnace heating</li>
+                        <li>LED lighting throughout</li>
+                        <li>USB charging ports</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Entertainment</h3>
+                    <ul>
+                        <li>TV hookups</li>
+                        <li>Bluetooth speakers</li>
+                        <li>Exterior speakers</li>
+                        <li>Awning with LED lights</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Exterior</h3>
+                    <ul>
+                        <li>Power awning</li>
+                        <li>Outdoor kitchen</li>
+                        <li>Pass-through storage</li>
+                        <li>Stabilizer jacks</li>
+                        <li>Spare tire</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <h2 class="section-title">Book This Camper</h2>
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h3>Rental Information</h3>
+                    <p>Ready to hit the road? The Salem 26DBUD is perfect for family camping trips to Red River Gorge and beyond.</p>
+                    <ul>
+                        <li><strong>Minimum Rental:</strong> 2 nights</li>
+                        <li><strong>Pickup Location:</strong> Beattyville, KY</li>
+                        <li><strong>Tow Vehicle Required:</strong> 1/2 ton truck or larger</li>
+                        <li><strong>Security Deposit:</strong> $500 (refundable)</li>
+                    </ul>
+                    <h3>What's Included</h3>
+                    <ul>
+                        <li>All bedding and linens</li>
+                        <li>Kitchen essentials (pots, pans, utensils)</li>
+                        <li>Outdoor chairs and table</li>
+                        <li>Full propane tank</li>
+                        <li>Camping orientation walkthrough</li>
+                    </ul>
+                </div>
+                <div class="booking-calendar">
+                    <div class="calendar-placeholder">
+                        <p style="font-size: 2rem; margin-bottom: 1rem;">📅</p>
+                        <p>Check availability and book directly through our rental platform</p>
+                    </div>
+                    <a href="https://www.outdoorsy.com" target="_blank" class="book-btn">Check Availability on Outdoorsy →</a>
+                    <p style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">Or call us at <a href="tel:+12602059145">(260) 205-9145</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <a href="mailto:hello@redrivercamperco.com">hello@redrivercamperco.com</a>
+            <a href="tel:+12602059145">(260) 205-9145</a>
+        </div>
+        <p>© 2025 Red River Camper Co. | Beattyville, Kentucky</p>
+    </footer>
+</body>
+</html>

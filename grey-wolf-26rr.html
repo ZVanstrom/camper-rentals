@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021 Grey Wolf Cherokee 26RR | Red River Camper Co.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a3a2f;
+            --accent: #d97706;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; background: white;
+            padding: 1rem 2rem; display: flex; justify-content: space-between;
+            align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 100;
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta { background: var(--accent); color: white !important; padding: 0.5rem 1.25rem; border-radius: 6px; }
+
+        /* Hero */
+        .camper-hero {
+            padding: 8rem 2rem 4rem; background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%);
+            color: white;
+        }
+        .camper-hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .camper-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.75rem; margin-bottom: 0.5rem; }
+        .camper-hero .year { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; }
+        .camper-hero p { opacity: 0.9; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .hero-image { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .price-tag { background: var(--accent); display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 1.25rem; font-weight: 600; }
+        .badge { background: #dc2626; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+
+        /* Content */
+        section { padding: 4rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem; color: var(--primary); }
+
+        /* Specs */
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .spec-card { background: var(--light); padding: 1.5rem; border-radius: 12px; text-align: center; }
+        .spec-card .label { color: var(--gray); font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .spec-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+
+        /* Garage Highlight */
+        .garage-highlight {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white; padding: 3rem; border-radius: 16px; margin: 3rem 0;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
+        }
+        .garage-highlight h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; margin-bottom: 1rem; }
+        .garage-highlight p { opacity: 0.9; margin-bottom: 1rem; }
+        .garage-highlight ul { list-style: none; }
+        .garage-highlight li { padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem; }
+        .garage-highlight li::before { content: "→"; }
+        .garage-icon { font-size: 6rem; text-align: center; }
+
+        /* Features */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .feature-category h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--dark); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+        .feature-category ul { list-style: none; }
+        .feature-category li { padding: 0.5rem 0; color: var(--gray); display: flex; align-items: center; gap: 0.5rem; }
+        .feature-category li::before { content: "✓"; color: var(--accent); font-weight: bold; }
+
+        /* Booking */
+        .booking-section { background: var(--light); }
+        .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .booking-info h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+        .booking-info p { color: var(--gray); margin-bottom: 1rem; }
+        .booking-info ul { list-style: none; margin-bottom: 1.5rem; }
+        .booking-info li { padding: 0.5rem 0; color: var(--dark); }
+        .booking-calendar { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .calendar-placeholder { text-align: center; padding: 3rem; border: 2px dashed var(--gray); border-radius: 8px; color: var(--gray); }
+        .book-btn { display: inline-block; background: var(--accent); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin-top: 1rem; }
+        .book-btn:hover { background: #b45309; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 3rem 2rem; text-align: center; }
+        footer a { color: var(--accent); text-decoration: none; }
+        .contact-info { margin-bottom: 1.5rem; }
+        .contact-info a { margin: 0 1rem; }
+
+        @media (max-width: 768px) {
+            .camper-hero-content, .booking-container, .garage-highlight { grid-template-columns: 1fr; }
+            .camper-hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .garage-icon { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Red River Camper Co.</a>
+        <ul class="nav-links">
+            <li><a href="index.html#campers">Our Campers</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#location">Location</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="#booking" class="nav-cta">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <section class="camper-hero">
+        <div class="camper-hero-content">
+            <div>
+                <span class="badge">Toy Hauler</span>
+                <p class="year">2021 Model</p>
+                <h1>Grey Wolf Cherokee 26RR</h1>
+                <p>Bring your toys to Red River Gorge! This versatile toy hauler features a rear garage with a power ramp that converts to a patio. Perfect for ATVs, motorcycles, kayaks, mountain bikes, or extra gear.</p>
+                <div class="price-tag">Starting at $125/night</div>
+            </div>
+            <div class="hero-image">
+                <img src="https://imagedelivery.net/eZKniD8IPo85-tfyHjsV4g/3d2accf1d78068299c4e06dcea6e3d5e.jpeg/width=731,height=469,fit=cover,gravity=0.5x0.5,anim=false" alt="2021 Grey Wolf Cherokee 26RR">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Sleeps</div>
+                    <div class="value">6</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Length</div>
+                    <div class="value">30 ft</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Dry Weight</div>
+                    <div class="value">6,250 lbs</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Garage Length</div>
+                    <div class="value">10 ft</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Fresh Water</div>
+                    <div class="value">43 gal</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Fuel Station</div>
+                    <div class="value">30 gal</div>
+                </div>
+            </div>
+
+            <div class="garage-highlight">
+                <div>
+                    <h3>10-Foot Rear Garage</h3>
+                    <p>The highlight of this toy hauler — a dedicated garage space with a power ramp door that doubles as a patio deck.</p>
+                    <ul>
+                        <li>Fits 2 ATVs or 2 motorcycles</li>
+                        <li>Tie-down D-rings throughout</li>
+                        <li>30-gallon fuel station</li>
+                        <li>Converts to extra sleeping/living space</li>
+                        <li>Power ramp door with screen option</li>
+                        <li>Exterior patio mode with railing</li>
+                    </ul>
+                </div>
+                <div class="garage-icon">🏍️</div>
+            </div>
+
+            <h2 class="section-title">Features & Amenities</h2>
+            <div class="features-grid">
+                <div class="feature-category">
+                    <h3>Sleeping</h3>
+                    <ul>
+                        <li>Queen master bedroom</li>
+                        <li>Garage converts to beds</li>
+                        <li>Convertible dinette</li>
+                        <li>Flexible sleeping arrangements</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Kitchen</h3>
+                    <ul>
+                        <li>3-burner gas stove</li>
+                        <li>Microwave oven</li>
+                        <li>8 cu ft refrigerator</li>
+                        <li>Deep sink</li>
+                        <li>Counter space</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Bathroom</h3>
+                    <ul>
+                        <li>Full bathroom</li>
+                        <li>Foot-flush toilet</li>
+                        <li>Shower with glass door</li>
+                        <li>Vanity with storage</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Toy Hauler Features</h3>
+                    <ul>
+                        <li>10 ft garage space</li>
+                        <li>Power ramp door</li>
+                        <li>30 gal fuel station</li>
+                        <li>Tie-down D-rings</li>
+                        <li>Interior & exterior access</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Climate & Comfort</h3>
+                    <ul>
+                        <li>A/C (13,500 BTU)</li>
+                        <li>Furnace heating</li>
+                        <li>LED lighting</li>
+                        <li>USB charging ports</li>
+                        <li>TV hookups</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Exterior</h3>
+                    <ul>
+                        <li>Power awning</li>
+                        <li>Ramp door patio mode</li>
+                        <li>Pass-through storage</li>
+                        <li>Stabilizer jacks</li>
+                        <li>Spare tire</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <h2 class="section-title">Book This Camper</h2>
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h3>Rental Information</h3>
+                    <p>The perfect rig for adventure seekers who want to bring their toys to Red River Gorge. Great for ATVs, dirt bikes, kayaks, or mountain bikes.</p>
+                    <ul>
+                        <li><strong>Minimum Rental:</strong> 2 nights</li>
+                        <li><strong>Pickup Location:</strong> Beattyville, KY</li>
+                        <li><strong>Tow Vehicle Required:</strong> 1/2 ton truck or larger</li>
+                        <li><strong>Security Deposit:</strong> $500 (refundable)</li>
+                    </ul>
+                    <h3>What's Included</h3>
+                    <ul>
+                        <li>All bedding and linens</li>
+                        <li>Kitchen essentials</li>
+                        <li>Outdoor chairs</li>
+                        <li>Full propane tank</li>
+                        <li>Fuel station ready to use</li>
+                        <li>Tie-down straps available</li>
+                    </ul>
+                    <h3>Popular Uses</h3>
+                    <ul>
+                        <li>ATV riding at nearby trails</li>
+                        <li>Mountain biking adventures</li>
+                        <li>Kayaking the Red River</li>
+                        <li>Motorcycle camping trips</li>
+                        <li>Rock climbing gear transport</li>
+                    </ul>
+                </div>
+                <div class="booking-calendar">
+                    <div class="calendar-placeholder">
+                        <p style="font-size: 2rem; margin-bottom: 1rem;">📅</p>
+                        <p>Check availability and book directly through our rental platform</p>
+                    </div>
+                    <a href="https://www.outdoorsy.com" target="_blank" class="book-btn">Check Availability on Outdoorsy →</a>
+                    <p style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">Or call us at <a href="tel:+12602059145">(260) 205-9145</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <a href="mailto:hello@redrivercamperco.com">hello@redrivercamperco.com</a>
+            <a href="tel:+12602059145">(260) 205-9145</a>
+        </div>
+        <p>© 2025 Red River Camper Co. | Beattyville, Kentucky</p>
+    </footer>
+</body>
+</html>
