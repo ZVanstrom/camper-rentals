@@ -46,44 +46,65 @@
         /* Content */
         section { padding: 4rem 2rem; }
         .container { max-width: 1200px; margin: 0 auto; }
-        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem; color: var(--primary); }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--primary); text-align: center; }
+        .section-subtitle { text-align: center; color: var(--gray); font-size: 1.1rem; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 
-        /* Specs */
-        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-        .spec-card { background: var(--light); padding: 1.5rem; border-radius: 12px; text-align: center; }
-        .spec-card .label { color: var(--gray); font-size: 0.85rem; margin-bottom: 0.5rem; }
+        /* Description Section */
+        .description-section { background: white; }
+        .description-content { max-width: 900px; margin: 0 auto; }
+        .description-content h2 { font-family: 'Playfair Display', serif; font-size: 2.25rem; color: var(--primary); margin-bottom: 1.5rem; }
+        .description-content h3 { font-size: 1.5rem; color: var(--dark); margin: 2rem 0 1rem; }
+        .description-content p { color: var(--gray); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+        .description-content ul { margin: 1rem 0 1.5rem 1.5rem; }
+        .description-content li { color: var(--dark); font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.5rem; }
+        .highlight-box { background: var(--light); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 2rem 0; border-radius: 8px; }
+        .highlight-box p { color: var(--dark); margin-bottom: 0.5rem; }
+
+        /* Collapsible Technical Details */
+        .tech-details-toggle {
+            background: var(--light);
+            border: 2px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0 1rem;
+            transition: background 0.3s;
+        }
+        .tech-details-toggle:hover { background: #e8f0fe; }
+        .tech-details-toggle h3 { margin: 0; color: var(--primary); font-size: 1.3rem; }
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+        .toggle-icon.open { transform: rotate(180deg); }
+        .tech-details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .tech-details-content.open { max-height: 2000px; }
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .spec-card { background: var(--light); padding: 1.5rem; border-radius: 12px; text-align: center; border: 1px solid #e2e8f0; }
+        .spec-card .label { color: var(--gray); font-size: 0.85rem; margin-bottom: 0.5rem; text-transform: uppercase; }
         .spec-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
 
-        /* Garage Highlight */
-        .garage-highlight {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            color: white; padding: 3rem; border-radius: 16px; margin: 3rem 0;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
-        }
-        .garage-highlight h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; margin-bottom: 1rem; }
-        .garage-highlight p { opacity: 0.9; margin-bottom: 1rem; }
-        .garage-highlight ul { list-style: none; }
-        .garage-highlight li { padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem; }
-        .garage-highlight li::before { content: "→"; }
-        .garage-icon { font-size: 6rem; text-align: center; }
-
         /* Features */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .feature-category h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--dark); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
-        .feature-category ul { list-style: none; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .feature-category h4 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--dark); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+        .feature-category ul { list-style: none; margin: 0; }
         .feature-category li { padding: 0.5rem 0; color: var(--gray); display: flex; align-items: center; gap: 0.5rem; }
         .feature-category li::before { content: "✓"; color: var(--accent); font-weight: bold; }
 
         /* Booking */
         .booking-section { background: var(--light); }
-        .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-        .booking-info h3 { font-size: 1.25rem; margin-bottom: 1rem; }
-        .booking-info p { color: var(--gray); margin-bottom: 1rem; }
-        .booking-info ul { list-style: none; margin-bottom: 1.5rem; }
-        .booking-info li { padding: 0.5rem 0; color: var(--dark); }
-        .booking-calendar { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .calendar-placeholder { text-align: center; padding: 3rem; border: 2px dashed var(--gray); border-radius: 8px; color: var(--gray); }
-        .book-btn { display: inline-block; background: var(--accent); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin-top: 1rem; }
+        .booking-cta { text-align: center; max-width: 600px; margin: 0 auto; }
+        .booking-cta h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
+        .booking-cta p { color: var(--gray); font-size: 1.1rem; margin-bottom: 2rem; }
+        .book-btn { display: inline-block; background: var(--accent); color: white; padding: 1.25rem 3rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.2rem; margin-bottom: 1rem; transition: background 0.2s; }
         .book-btn:hover { background: #b45309; }
 
         /* Footer */
@@ -93,10 +114,11 @@
         .contact-info a { margin: 0 1rem; }
 
         @media (max-width: 768px) {
-            .camper-hero-content, .booking-container, .garage-highlight { grid-template-columns: 1fr; }
+            .camper-hero-content { grid-template-columns: 1fr; }
             .camper-hero h1 { font-size: 2rem; }
             .nav-links { display: none; }
-            .garage-icon { font-size: 4rem; }
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -105,7 +127,6 @@
         <a href="index.html" class="logo">Red River Camper Co.</a>
         <ul class="nav-links">
             <li><a href="index.html#campers">Our Campers</a></li>
-            <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#location">Location</a></li>
             <li><a href="index.html#faq">FAQ</a></li>
             <li><a href="#booking" class="nav-cta">Book Now</a></li>
@@ -115,10 +136,10 @@
     <section class="camper-hero">
         <div class="camper-hero-content">
             <div>
-                <span class="badge">Toy Hauler</span>
+                <span class="badge">🐾 Pets Approved!</span>
                 <p class="year">2021 Model</p>
-                <h1>Grey Wolf Cherokee 26RR</h1>
-                <p>Bring your toys to Red River Gorge! This versatile toy hauler features a rear garage with a power ramp that converts to a patio. Perfect for ATVs, motorcycles, kayaks, mountain bikes, or extra gear.</p>
+                <h1>Grey Wolf Cherokee 26RR Toy Hauler</h1>
+                <p>Glamping-Ready! Your home away from home on wheels with space for all your adventure gear.</p>
                 <div class="price-tag">Starting at $125/night</div>
             </div>
             <div class="hero-image">
@@ -127,111 +148,159 @@
         </div>
     </section>
 
-    <section>
+    <section class="description-section">
         <div class="container">
-            <h2 class="section-title">Specifications</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <div class="label">Sleeps</div>
-                    <div class="value">6</div>
-                </div>
-                <div class="spec-card">
-                    <div class="label">Length</div>
-                    <div class="value">30 ft</div>
-                </div>
-                <div class="spec-card">
-                    <div class="label">Dry Weight</div>
-                    <div class="value">6,250 lbs</div>
-                </div>
-                <div class="spec-card">
-                    <div class="label">Garage Length</div>
-                    <div class="value">10 ft</div>
-                </div>
-                <div class="spec-card">
-                    <div class="label">Fresh Water</div>
-                    <div class="value">43 gal</div>
-                </div>
-                <div class="spec-card">
-                    <div class="label">Fuel Station</div>
-                    <div class="value">30 gal</div>
-                </div>
-            </div>
+            <div class="description-content">
+                <h2>Ready to roll into adventure with style?</h2>
+                <p>Meet our 2021 Forest River Grey Wolf 26RR Toy Hauler—your home away from home on wheels! Whether you're chasing sunsets or just craving a cozy getaway, this beauty's got everything you need for a memorable escape.</p>
 
-            <div class="garage-highlight">
-                <div>
-                    <h3>10-Foot Rear Garage</h3>
-                    <p>The highlight of this toy hauler — a dedicated garage space with a power ramp door that doubles as a patio deck.</p>
-                    <ul>
-                        <li>Fits 2 ATVs or 2 motorcycles</li>
-                        <li>Tie-down D-rings throughout</li>
-                        <li>30-gallon fuel station</li>
-                        <li>Converts to extra sleeping/living space</li>
-                        <li>Power ramp door with screen option</li>
-                        <li>Exterior patio mode with railing</li>
-                    </ul>
-                </div>
-                <div class="garage-icon">🏍️</div>
-            </div>
+                <h3>✨ Comfortably Sleeps 4</h3>
+                <ul>
+                    <li>Private front bedroom with a real door (yes, privacy!)</li>
+                    <li>Convertible rear area for sleeping/lounging</li>
+                </ul>
 
-            <h2 class="section-title">Features & Amenities</h2>
-            <div class="features-grid">
-                <div class="feature-category">
-                    <h3>Sleeping</h3>
-                    <ul>
-                        <li>Queen master bedroom</li>
-                        <li>Garage converts to beds</li>
-                        <li>Convertible dinette</li>
-                        <li>Flexible sleeping arrangements</li>
-                    </ul>
+                <h3>🏕️ Bonus Patio</h3>
+                <p>Drop-down rear ramp becomes a patio—perfect for morning coffee or evening chill sessions under the stars.</p>
+
+                <h3>🍳 Fully Stocked Just Like Home</h3>
+                <p>Pots, pans, utensils, linens, cleaning supplies—you name it, it's there. Just bring your food and sense of adventure.</p>
+
+                <h3>🎮 Entertainment Galore</h3>
+                <ul>
+                    <li>2 TVs</li>
+                    <li>LED lighting</li>
+                    <li>Indoor/outdoor surround sound speakers</li>
+                    <li>Fun games available like cornhole and oversized Jenga (available to rent!)</li>
+                </ul>
+
+                <h3>⛺ Outdoor Gear Included</h3>
+                <ul>
+                    <li>Outdoor chairs and a large rug for lounging in style</li>
+                    <li>Easy-up Jack for stress-free setup</li>
+                    <li>USB Charging system in living room and bedroom</li>
+                </ul>
+
+                <h3>🌟 Special Amenities with Grey Wolf Limited Package</h3>
+                <ul>
+                    <li>Skylights and LED lighting throughout</li>
+                    <li>Blue LED accent lights</li>
+                    <li>Elevated Patio Deck</li>
+                    <li>Farm Sink</li>
+                    <li>Easy close cabinets</li>
+                    <li>Outdoor Hot/Cold Shower</li>
+                    <li>Easy Propane Grill attachment</li>
+                    <li>Dog Leash attachment exterior</li>
+                    <li>Automatic Easy-up awning</li>
+                    <li>Too many features to list them all...</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>📍 Pickup:</strong> Beattyville, KY (near Red River Gorge)</p>
+                    <p><strong>🚗 Delivery:</strong> Available up to 100 miles at $5/mile (both ways), minimum $100 with setup included</p>
+                    <p><strong>⚡ Generator:</strong> Available to rent for boondocking adventures</p>
                 </div>
-                <div class="feature-category">
-                    <h3>Kitchen</h3>
-                    <ul>
-                        <li>3-burner gas stove</li>
-                        <li>Microwave oven</li>
-                        <li>8 cu ft refrigerator</li>
-                        <li>Deep sink</li>
-                        <li>Counter space</li>
-                    </ul>
+
+                <p style="font-size: 1.15rem; color: var(--dark); font-weight: 500; text-align: center; margin-top: 2rem;">Perfect for couples, small families, or anyone who wants to camp without roughing it.</p>
+                <p style="font-size: 1.3rem; color: var(--accent); font-weight: 600; text-align: center; margin-top: 1rem;">Let's go glamping, not camping! 🏕️✨</p>
+
+                <!-- Collapsible Technical Details -->
+                <div class="tech-details-toggle" onclick="toggleTechDetails()">
+                    <h3>📋 Technical Specifications</h3>
+                    <span class="toggle-icon" id="toggleIcon">▼</span>
                 </div>
-                <div class="feature-category">
-                    <h3>Bathroom</h3>
-                    <ul>
-                        <li>Full bathroom</li>
-                        <li>Foot-flush toilet</li>
-                        <li>Shower with glass door</li>
-                        <li>Vanity with storage</li>
-                    </ul>
-                </div>
-                <div class="feature-category">
-                    <h3>Toy Hauler Features</h3>
-                    <ul>
-                        <li>10 ft garage space</li>
-                        <li>Power ramp door</li>
-                        <li>30 gal fuel station</li>
-                        <li>Tie-down D-rings</li>
-                        <li>Interior & exterior access</li>
-                    </ul>
-                </div>
-                <div class="feature-category">
-                    <h3>Climate & Comfort</h3>
-                    <ul>
-                        <li>A/C (13,500 BTU)</li>
-                        <li>Furnace heating</li>
-                        <li>LED lighting</li>
-                        <li>USB charging ports</li>
-                        <li>TV hookups</li>
-                    </ul>
-                </div>
-                <div class="feature-category">
-                    <h3>Exterior</h3>
-                    <ul>
-                        <li>Power awning</li>
-                        <li>Ramp door patio mode</li>
-                        <li>Pass-through storage</li>
-                        <li>Stabilizer jacks</li>
-                        <li>Spare tire</li>
-                    </ul>
+                <div class="tech-details-content" id="techDetailsContent">
+                    <div class="specs-grid">
+                        <div class="spec-card">
+                            <div class="label">Sleeps</div>
+                            <div class="value">4</div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="label">Length</div>
+                            <div class="value">30 ft</div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="label">Dry Weight</div>
+                            <div class="value">6,250 lbs</div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="label">Garage Length</div>
+                            <div class="value">10 ft</div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="label">Fresh Water</div>
+                            <div class="value">43 gal</div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="label">Fuel Station</div>
+                            <div class="value">30 gal</div>
+                        </div>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-category">
+                            <h4>Sleeping</h4>
+                            <ul>
+                                <li>Queen master bedroom</li>
+                                <li>Garage converts to beds</li>
+                                <li>Convertible dinette</li>
+                                <li>Flexible sleeping arrangements</li>
+                            </ul>
+                        </div>
+                        <div class="feature-category">
+                            <h4>Kitchen</h4>
+                            <ul>
+                                <li>3-burner gas stove</li>
+                                <li>Microwave oven</li>
+                                <li>8 cu ft refrigerator</li>
+                                <li>Deep farm sink</li>
+                                <li>Counter space</li>
+                            </ul>
+                        </div>
+                        <div class="feature-category">
+                            <h4>Bathroom</h4>
+                            <ul>
+                                <li>Full bathroom</li>
+                                <li>Foot-flush toilet</li>
+                                <li>Shower with glass door</li>
+                                <li>Vanity with storage</li>
+                                <li>Outdoor hot/cold shower</li>
+                            </ul>
+                        </div>
+                        <div class="feature-category">
+                            <h4>Toy Hauler Features</h4>
+                            <ul>
+                                <li>10 ft garage space</li>
+                                <li>Power ramp door</li>
+                                <li>30 gal fuel station</li>
+                                <li>Tie-down D-rings</li>
+                                <li>Interior & exterior access</li>
+                                <li>Converts to patio deck</li>
+                            </ul>
+                        </div>
+                        <div class="feature-category">
+                            <h4>Climate & Comfort</h4>
+                            <ul>
+                                <li>A/C (13,500 BTU)</li>
+                                <li>Furnace heating</li>
+                                <li>LED lighting throughout</li>
+                                <li>USB charging ports</li>
+                                <li>2 TV hookups</li>
+                                <li>Surround sound speakers</li>
+                            </ul>
+                        </div>
+                        <div class="feature-category">
+                            <h4>Exterior</h4>
+                            <ul>
+                                <li>Automatic power awning</li>
+                                <li>Ramp door patio mode</li>
+                                <li>Pass-through storage</li>
+                                <li>Stabilizer jacks</li>
+                                <li>Spare tire</li>
+                                <li>Propane grill attachment</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -239,43 +308,11 @@
 
     <section id="booking" class="booking-section">
         <div class="container">
-            <h2 class="section-title">Book This Camper</h2>
-            <div class="booking-container">
-                <div class="booking-info">
-                    <h3>Rental Information</h3>
-                    <p>The perfect rig for adventure seekers who want to bring their toys to Red River Gorge. Great for ATVs, dirt bikes, kayaks, or mountain bikes.</p>
-                    <ul>
-                        <li><strong>Minimum Rental:</strong> 2 nights</li>
-                        <li><strong>Pickup Location:</strong> Beattyville, KY</li>
-                        <li><strong>Tow Vehicle Required:</strong> 1/2 ton truck or larger</li>
-                        <li><strong>Security Deposit:</strong> $500 (refundable)</li>
-                    </ul>
-                    <h3>What's Included</h3>
-                    <ul>
-                        <li>All bedding and linens</li>
-                        <li>Kitchen essentials</li>
-                        <li>Outdoor chairs</li>
-                        <li>Full propane tank</li>
-                        <li>Fuel station ready to use</li>
-                        <li>Tie-down straps available</li>
-                    </ul>
-                    <h3>Popular Uses</h3>
-                    <ul>
-                        <li>ATV riding at nearby trails</li>
-                        <li>Mountain biking adventures</li>
-                        <li>Kayaking the Red River</li>
-                        <li>Motorcycle camping trips</li>
-                        <li>Rock climbing gear transport</li>
-                    </ul>
-                </div>
-                <div class="booking-calendar">
-                    <div class="calendar-placeholder">
-                        <p style="font-size: 2rem; margin-bottom: 1rem;">📅</p>
-                        <p>Check availability and book directly through our rental platform</p>
-                    </div>
-                    <a href="https://www.outdoorsy.com" target="_blank" class="book-btn">Check Availability on Outdoorsy →</a>
-                    <p style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">Or call us at <a href="tel:+12602059145">(260) 205-9145</a></p>
-                </div>
+            <div class="booking-cta">
+                <h2>Reserve Your Dates Today</h2>
+                <p>Adventure awaits! Book the Grey Wolf and start planning your Red River Gorge getaway.</p>
+                <a href="https://www.rvshare.com" target="_blank" class="book-btn">Book on RVShare →</a>
+                <p style="color: var(--gray); font-size: 0.95rem;">or contact us directly at <a href="mailto:hello@redrivercamperco.com" style="color: var(--accent);">hello@redrivercamperco.com</a> or <a href="tel:+12602059145" style="color: var(--accent);">(260) 205-9145</a></p>
             </div>
         </div>
     </section>
@@ -287,5 +324,14 @@
         </div>
         <p>© 2025 Red River Camper Co. | Beattyville, Kentucky</p>
     </footer>
+
+    <script>
+        function toggleTechDetails() {
+            const content = document.getElementById('techDetailsContent');
+            const icon = document.getElementById('toggleIcon');
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
