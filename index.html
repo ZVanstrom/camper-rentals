@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red River Camper Co. | Camper Rentals near Red River Gorge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a2f;
+            --accent: #d97706;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: white !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+        }
+
+        .nav-cta:hover {
+            background: #b45309;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .hero-btn:hover {
+            background: #b45309;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Campers Grid */
+        .campers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .camper-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .camper-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .camper-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary), #3d7a5f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .camper-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .camper-info {
+            padding: 1.5rem;
+        }
+
+        .camper-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .camper-info .year {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .camper-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .spec-tag {
+            background: var(--light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .camper-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .camper-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .camper-btn:hover {
+            background: #0f2920;
+        }
+
+        /* About */
+        .about {
+            background: var(--light);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Location */
+        .location-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .location-text p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .location-features {
+            list-style: none;
+        }
+
+        .location-features li {
+            padding: 0.5rem 0;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .location-features li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .location-map {
+            background: linear-gradient(135deg, var(--primary), #3d7a5f);
+            border-radius: 12px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--light);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .faq-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .cta-btn:hover {
+            background: #b45309;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info a {
+            display: inline-block;
+            margin: 0 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .campers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Red River Camper Co.</a>
+        <ul class="nav-links">
+            <li><a href="#campers">Our Campers</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#book" class="nav-cta">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Red River Camper Co.</h1>
+            <p>Premium camper rentals at the doorstep of Red River Gorge. Your adventure in Kentucky's most stunning wilderness starts here.</p>
+            <a href="#campers" class="hero-btn">Explore Our Fleet</a>
+        </div>
+    </section>
+
+    <!-- Campers -->
+    <section id="campers">
+        <h2 class="section-title">Our Campers</h2>
+        <p class="section-subtitle">Three quality campers ready for your Red River Gorge adventure. Each unit is well-maintained and fully equipped.</p>
+
+        <div class="campers-grid">
+            <!-- Camper 1 -->
+            <div class="camper-card">
+                <div class="camper-image">
+                    <img src="https://assets-cdn.interactcp.com/meyersrvsuperstores/unit_photo/imgh_800x600-wm_meyersrvsuperstores_com-m0909202409480359/unit_photo_202409090248035969411440.jpg" alt="2025 Salem 26DBUD Travel Trailer">
+                </div>
+                <div class="camper-info">
+                    <p class="year">2025 Model</p>
+                    <h3>Salem 26DBUD</h3>
+                    <div class="camper-specs">
+                        <span class="spec-tag">Bunk House</span>
+                        <span class="spec-tag">Sleeps 8</span>
+                        <span class="spec-tag">Outdoor Kitchen</span>
+                    </div>
+                    <p>Perfect for families. Double-over-double bunks and a private master bedroom make this ideal for groups.</p>
+                    <a href="#book" class="camper-btn">Check Availability</a>
+                </div>
+            </div>
+
+            <!-- Camper 2 -->
+            <div class="camper-card">
+                <div class="camper-image">
+                    <img src="https://assets-cdn.interactcp.com/bishsrvcountryrvshow/unit_photo/imgh_800x600-wm_bishs_com-m0128202519405522/unit_photo_202410190600469837339457.jpg" alt="2025 Salem 36VBDS Travel Trailer">
+                </div>
+                <div class="camper-info">
+                    <p class="year">2025 Model</p>
+                    <h3>Salem 36VBDS</h3>
+                    <div class="camper-specs">
+                        <span class="spec-tag">Bunk Room</span>
+                        <span class="spec-tag">Sleeps 10</span>
+                        <span class="spec-tag">2 Bathrooms</span>
+                    </div>
+                    <p>Our largest camper with maximum space and comfort. Two full bathrooms and a dedicated bunk room for the kids.</p>
+                    <a href="#book" class="camper-btn">Check Availability</a>
+                </div>
+            </div>
+
+            <!-- Camper 3 -->
+            <div class="camper-card">
+                <div class="camper-image">
+                    <img src="https://imagedelivery.net/eZKniD8IPo85-tfyHjsV4g/3d2accf1d78068299c4e06dcea6e3d5e.jpeg/width=731,height=469,fit=cover,gravity=0.5x0.5,anim=false" alt="2021 Grey Wolf Cherokee 26RR Toy Hauler">
+                </div>
+                <div class="camper-info">
+                    <p class="year">2021 Model</p>
+                    <h3>Grey Wolf Cherokee 26RR</h3>
+                    <div class="camper-specs">
+                        <span class="spec-tag">Toy Hauler</span>
+                        <span class="spec-tag">Sleeps 6</span>
+                        <span class="spec-tag">Garage Space</span>
+                    </div>
+                    <p>Bring your toys! This toy hauler has a rear garage perfect for ATVs, bikes, kayaks, or extra gear.</p>
+                    <a href="#book" class="camper-btn">Check Availability</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <p>Red River Camper Co. was founded with a simple mission: make it easy for adventurers to experience the beauty of Red River Gorge in comfort. We're local to Beattyville and know these hills, trails, and swimming holes like the back of our hand.</p>
+            <p>Our small fleet of three quality campers means we can give each rental the personal attention it deserves. Every camper is thoroughly cleaned, inspected, and stocked before your arrival. We're here to make your trip memorable—from booking to checkout.</p>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section id="location">
+        <h2 class="section-title">Location</h2>
+        <p class="section-subtitle">Perfectly positioned near Red River Gorge for easy access to all the best outdoor activities.</p>
+
+        <div class="location-content">
+            <div class="location-text">
+                <h3>Based in Beattyville, KY</h3>
+                <p>Our campers are stored just minutes from Red River Gorge, giving you quick access to:</p>
+                <ul class="location-features">
+                    <li>World-class rock climbing at the Red</li>
+                    <li>100+ miles of hiking trails</li>
+                    <li>Natural Bridge State Park</li>
+                    <li>Swimming holes & cliff jumping</li>
+                    <li>Miguel's Pizza (a local legend)</li>
+                    <li>Nada Tunnel & scenic drives</li>
+                </ul>
+            </div>
+            <div class="location-map">
+                <p>📍 Beattyville, KY<br>Near Red River Gorge</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know before booking.</p>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>Do I need my own truck to tow?</h3>
+                <p>Yes, our campers are tow-behind units. You'll need a capable tow vehicle. We can advise on towing requirements for each camper when you book.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Where can I take the camper?</h3>
+                <p>Our campers can be taken to any campground within a reasonable distance. Red River Gorge has several excellent campgrounds, and we're happy to recommend our favorites.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What's included with the rental?</h3>
+                <p>All campers come with basic kitchen supplies, bedding, outdoor chairs, and a full propane tank. Just bring your clothes, food, and sense of adventure.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is your cancellation policy?</h3>
+                <p>We offer full refunds for cancellations made 14+ days before your trip. Cancellations within 14 days receive a 50% refund or full credit toward a future booking.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is there a security deposit?</h3>
+                <p>Yes, we require a refundable security deposit that's returned after the camper is inspected post-rental. Details are provided during booking.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="book" class="cta">
+        <h2>Ready for Your Adventure?</h2>
+        <p>Book your camper today and start planning your Red River Gorge getaway.</p>
+        <a href="https://www.outdoorsy.com" target="_blank" class="cta-btn">Book on Outdoorsy →</a>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">or contact us directly at <a href="mailto:hello@redrivercamperco.com" style="color: white; text-decoration: underline;">hello@redrivercamperco.com</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <a href="mailto:hello@redrivercamperco.com">hello@redrivercamperco.com</a>
+            <a href="tel:+15551234567">(555) 123-4567</a>
+        </div>
+        <p>© 2025 Red River Camper Co. | Beattyville, Kentucky</p>
+    </footer>
+</body>
+</html>
