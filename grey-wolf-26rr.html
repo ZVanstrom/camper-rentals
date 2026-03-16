@@ -29,6 +29,16 @@
         .nav-links a:hover { color: var(--accent); }
         .nav-cta { background: var(--accent); color: white !important; padding: 0.5rem 1.25rem; border-radius: 6px; }
 
+        /* Dropdown */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > a::after { content: " ▾"; font-size: 0.75rem; opacity: 0.6; }
+        .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: 0; width: 100%; height: 12px; }
+        .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: white; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); min-width: 220px; padding: 0.5rem 0; z-index: 200; border: 1px solid var(--border); }
+        .dropdown-menu::before { content: ""; position: absolute; top: -6px; left: 50%; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid white; }
+        .dropdown-menu a { display: block; padding: 0.65rem 1.25rem; color: var(--dark) !important; font-size: 0.875rem; font-weight: 500; white-space: nowrap; transition: background 0.15s, color 0.15s; }
+        .dropdown-menu a:hover { background: var(--light); color: var(--accent) !important; }
+        .nav-dropdown:hover .dropdown-menu { display: block; }
+
         /* Hero */
         .camper-hero {
             padding: 8rem 2rem 4rem; background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%);
@@ -126,7 +136,14 @@
     <nav>
         <a href="index.html" class="logo">Red River Camper Co.</a>
         <ul class="nav-links">
-            <li><a href="index.html#campers">Our Campers</a></li>
+            <li class="nav-dropdown">
+                <a href="index.html#campers">Our Campers</a>
+                <div class="dropdown-menu">
+                    <a href="salem-26dbud.html">2025 Salem 26DBUD</a>
+                    <a href="salem-32bhds.html">2025 Salem 32BHDS</a>
+                    <a href="grey-wolf-26rr.html">2021 Grey Wolf Cherokee 26RR</a>
+                </div>
+            </li>
             <li><a href="index.html#location">Location</a></li>
             <li><a href="index.html#faq">FAQ</a></li>
             <li><a href="#booking" class="nav-cta">Book Now</a></li>
