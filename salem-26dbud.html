@@ -99,6 +99,63 @@
         .feature-category li { padding: 0.5rem 0; color: var(--gray); display: flex; align-items: center; gap: 0.5rem; }
         .feature-category li::before { content: "✓"; color: var(--accent); font-weight: bold; }
 
+        /* ── PHOTO CAROUSEL ── */
+        .carousel-section { background: var(--dark); padding: 3rem 2rem; }
+        .carousel-section .section-title { color: white; }
+        .carousel-wrapper { position: relative; max-width: 1100px; margin: 0 auto; }
+        .carousel-track-container { overflow: hidden; border-radius: 12px; }
+        .carousel-track { display: flex; transition: transform 0.4s ease; }
+        .carousel-slide { min-width: 100%; cursor: zoom-in; }
+        .carousel-slide img { width: 100%; height: 520px; object-fit: cover; display: block; }
+        .carousel-thumbs {
+            display: flex; gap: 0.5rem; margin-top: 1rem;
+            overflow-x: auto; padding-bottom: 0.5rem;
+            scrollbar-width: thin; scrollbar-color: var(--accent) #333;
+        }
+        .carousel-thumbs::-webkit-scrollbar { height: 4px; }
+        .carousel-thumbs::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+        .carousel-thumb {
+            min-width: 80px; height: 55px; object-fit: cover; border-radius: 6px;
+            cursor: pointer; opacity: 0.5; transition: opacity 0.2s, outline 0.2s;
+            outline: 2px solid transparent;
+        }
+        .carousel-thumb.active { opacity: 1; outline: 2px solid var(--accent); }
+        .carousel-btn {
+            position: absolute; top: calc(50% - 28px); transform: translateY(-50%);
+            background: rgba(0,0,0,0.55); color: white; border: none;
+            width: 44px; height: 44px; border-radius: 50%; font-size: 1.25rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s; z-index: 5;
+        }
+        .carousel-btn:hover { background: var(--accent); }
+        .carousel-btn.prev { left: -22px; }
+        .carousel-btn.next { right: -22px; }
+        .carousel-counter { text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 0.75rem; }
+
+        /* ── LIGHTBOX ── */
+        .lightbox {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.92); z-index: 1000;
+            align-items: center; justify-content: center;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-inner { position: relative; display: flex; align-items: center; justify-content: center; }
+        .lightbox-inner img { max-width: 88vw; max-height: 88vh; object-fit: contain; border-radius: 8px; box-shadow: 0 0 60px rgba(0,0,0,0.6); }
+        .lightbox-close {
+            position: fixed; top: 1.25rem; right: 1.5rem;
+            background: none; border: none; color: white;
+            font-size: 2.5rem; cursor: pointer; line-height: 1; opacity: 0.8;
+        }
+        .lightbox-close:hover { opacity: 1; color: var(--accent); }
+        .lightbox-btn {
+            background: rgba(255,255,255,0.12); border: none; color: white;
+            width: 50px; height: 50px; border-radius: 50%; font-size: 1.4rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            margin: 0 1rem; flex-shrink: 0; transition: background 0.2s;
+        }
+        .lightbox-btn:hover { background: var(--accent); }
+        .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+
         /* Booking */
         .booking-section { background: var(--light); }
         .booking-cta { text-align: center; max-width: 600px; margin: 0 auto; }
@@ -143,10 +200,65 @@
                 <a href="#booking" class="price-tag" style="text-decoration: none; color: white; display: inline-block; transition: opacity 0.2s;">Starting at $150/night ↓</a>
             </div>
             <div class="hero-image">
-                <img src="https://assets-cdn.interactcp.com/meyersrvsuperstores/unit_photo/imgh_800x600-wm_meyersrvsuperstores_com-m0909202409480359/unit_photo_202409090248035969411440.jpg" alt="2025 Salem 26DBUD">
+                <img src="camper_photos/26DBUD_photos/1_exterior.jpg" alt="2025 Salem 26DBUD">
             </div>
         </div>
     </section>
+
+    <!-- ── PHOTO CAROUSEL ── -->
+    <section class="carousel-section">
+        <h2 class="section-title" style="margin-bottom:1.5rem;">Photo Gallery</h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev" onclick="carouselMove(-1)">&#8592;</button>
+            <div class="carousel-track-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide" onclick="openLightbox(0)"><img src="camper_photos/26DBUD_photos/1_exterior.jpg"      alt="Exterior"></div>
+                    <div class="carousel-slide" onclick="openLightbox(1)"><img src="camper_photos/26DBUD_photos/2_main_interior.jpg" alt="Main interior"></div>
+                    <div class="carousel-slide" onclick="openLightbox(2)"><img src="camper_photos/26DBUD_photos/3_main_interior.jpg" alt="Main interior 2"></div>
+                    <div class="carousel-slide" onclick="openLightbox(3)"><img src="camper_photos/26DBUD_photos/4_kitchen.jpg"       alt="Kitchen"></div>
+                    <div class="carousel-slide" onclick="openLightbox(4)"><img src="camper_photos/26DBUD_photos/5_kitchen.jpg"       alt="Kitchen 2"></div>
+                    <div class="carousel-slide" onclick="openLightbox(5)"><img src="camper_photos/26DBUD_photos/6_lounge.jpg"        alt="Lounge"></div>
+                    <div class="carousel-slide" onclick="openLightbox(6)"><img src="camper_photos/26DBUD_photos/7_bedroom.jpg"       alt="Master bedroom"></div>
+                    <div class="carousel-slide" onclick="openLightbox(7)"><img src="camper_photos/26DBUD_photos/8_bedroom.jpg"       alt="Master bedroom 2"></div>
+                    <div class="carousel-slide" onclick="openLightbox(8)"><img src="camper_photos/26DBUD_photos/9_closet.jpg"        alt="Walk-in closet"></div>
+                    <div class="carousel-slide" onclick="openLightbox(9)"><img src="camper_photos/26DBUD_photos/10_bunkroom.jpg"     alt="Bunk room"></div>
+                    <div class="carousel-slide" onclick="openLightbox(10)"><img src="camper_photos/26DBUD_photos/11_bathroom.jpg"    alt="Bathroom"></div>
+                    <div class="carousel-slide" onclick="openLightbox(11)"><img src="camper_photos/26DBUD_photos/12_bathroom.jpg"    alt="Bathroom 2"></div>
+                    <div class="carousel-slide" onclick="openLightbox(12)"><img src="camper_photos/26DBUD_photos/13_pantry.jpg"      alt="Pantry"></div>
+                    <div class="carousel-slide" onclick="openLightbox(13)"><img src="camper_photos/26DBUD_photos/14_floorplan.jpg"   alt="Floor plan"></div>
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="carouselMove(1)">&#8594;</button>
+            <div class="carousel-thumbs" id="carouselThumbs">
+                <img class="carousel-thumb active" src="camper_photos/26DBUD_photos/1_exterior.jpg"      onclick="carouselGoTo(0)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/2_main_interior.jpg" onclick="carouselGoTo(1)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/3_main_interior.jpg" onclick="carouselGoTo(2)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/4_kitchen.jpg"       onclick="carouselGoTo(3)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/5_kitchen.jpg"       onclick="carouselGoTo(4)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/6_lounge.jpg"        onclick="carouselGoTo(5)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/7_bedroom.jpg"       onclick="carouselGoTo(6)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/8_bedroom.jpg"       onclick="carouselGoTo(7)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/9_closet.jpg"        onclick="carouselGoTo(8)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/10_bunkroom.jpg"     onclick="carouselGoTo(9)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/11_bathroom.jpg"     onclick="carouselGoTo(10)" alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/12_bathroom.jpg"     onclick="carouselGoTo(11)" alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/13_pantry.jpg"       onclick="carouselGoTo(12)" alt="">
+                <img class="carousel-thumb"        src="camper_photos/26DBUD_photos/14_floorplan.jpg"    onclick="carouselGoTo(13)" alt="">
+            </div>
+            <div class="carousel-counter" id="carouselCounter">1 / 14</div>
+        </div>
+    </section>
+
+    <!-- ── LIGHTBOX ── -->
+    <div class="lightbox" id="lightbox" onclick="handleLightboxClick(event)">
+        <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+        <div class="lightbox-inner">
+            <button class="lightbox-btn" onclick="lightboxPrev(event)">&#8592;</button>
+            <img id="lightboxImg" src="" alt="">
+            <button class="lightbox-btn" onclick="lightboxNext(event)">&#8594;</button>
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter">1 / 14</div>
+    </div>
 
     <section class="description-section">
         <div class="container">
@@ -185,7 +297,7 @@
 
                 <h3>☀️ Outdoor Living Space</h3>
                 <ul>
-                    <li>Power awning with LED lights for evening relaxation</li>
+
                     <li>Outdoor chairs and table included</li>
                     <li>Dual entry doors for easy access</li>
                     <li>Massive pass-through storage for bikes, kayaks, and adventure gear</li>
@@ -289,14 +401,14 @@
                                 <li>TV hookups (interior)</li>
                                 <li>Bluetooth sound system</li>
                                 <li>Exterior speakers</li>
-                                <li>Awning with LED lights</li>
+
                                 <li>Large windows for natural light</li>
                             </ul>
                         </div>
                         <div class="feature-category">
                             <h4>Exterior</h4>
                             <ul>
-                                <li>Power awning</li>
+
                                 <li>Outdoor kitchen</li>
                                 <li>Pass-through storage</li>
                                 <li>Power stabilizer jacks</li>
@@ -326,7 +438,7 @@
             <a href="mailto:cragcollege@gmail.com">cragcollege@gmail.com</a>
             <a href="tel:+12602059145">(260) 205-9145</a>
         </div>
-        <p>© 2025 Crag College Camper Rentals | Slade, Kentucky</p>
+        <p>© 2026 Crag College Camper Rentals | Slade, Kentucky</p>
     </footer>
 
     <script>
@@ -336,6 +448,65 @@
             content.classList.toggle('open');
             icon.classList.toggle('open');
         }
+
+        // ── CAROUSEL ──
+        const total = 14;
+        let current = 0;
+        const track   = document.getElementById('carouselTrack');
+        const counter = document.getElementById('carouselCounter');
+        const thumbs  = Array.from(document.querySelectorAll('.carousel-thumb'));
+
+        function carouselGoTo(idx) {
+            current = (idx + total) % total;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+            counter.textContent = `${current + 1} / ${total}`;
+            thumbs[current].scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+        }
+        function carouselMove(dir) { carouselGoTo(current + dir); }
+
+        // ── LIGHTBOX ──
+        const photos = [
+            'camper_photos/26DBUD_photos/1_exterior.jpg',
+            'camper_photos/26DBUD_photos/2_main_interior.jpg',
+            'camper_photos/26DBUD_photos/3_main_interior.jpg',
+            'camper_photos/26DBUD_photos/4_kitchen.jpg',
+            'camper_photos/26DBUD_photos/5_kitchen.jpg',
+            'camper_photos/26DBUD_photos/6_lounge.jpg',
+            'camper_photos/26DBUD_photos/7_bedroom.jpg',
+            'camper_photos/26DBUD_photos/8_bedroom.jpg',
+            'camper_photos/26DBUD_photos/9_closet.jpg',
+            'camper_photos/26DBUD_photos/10_bunkroom.jpg',
+            'camper_photos/26DBUD_photos/11_bathroom.jpg',
+            'camper_photos/26DBUD_photos/12_bathroom.jpg',
+            'camper_photos/26DBUD_photos/13_pantry.jpg',
+            'camper_photos/26DBUD_photos/14_floorplan.jpg',
+        ];
+        const lightbox        = document.getElementById('lightbox');
+        const lightboxImg     = document.getElementById('lightboxImg');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        let lbIndex = 0;
+
+        function openLightbox(idx) {
+            lbIndex = idx;
+            lightboxImg.src = photos[lbIndex];
+            lightboxCounter.textContent = `${lbIndex + 1} / ${total}`;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function lightboxPrev(e) { e.stopPropagation(); lbIndex = (lbIndex - 1 + total) % total; lightboxImg.src = photos[lbIndex]; lightboxCounter.textContent = `${lbIndex + 1} / ${total}`; }
+        function lightboxNext(e) { e.stopPropagation(); lbIndex = (lbIndex + 1) % total;          lightboxImg.src = photos[lbIndex]; lightboxCounter.textContent = `${lbIndex + 1} / ${total}`; }
+        function handleLightboxClick(e) { if (e.target === lightbox) closeLightbox(); }
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'ArrowLeft')  lightboxPrev(e);
+            if (e.key === 'ArrowRight') lightboxNext(e);
+            if (e.key === 'Escape')     closeLightbox();
+        });
     </script>
 </body>
 </html>
