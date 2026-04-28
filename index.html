@@ -198,19 +198,45 @@
 
         /* About */
         .about {
-            background: var(--light);
+            background: var(--primary);
+            color: white;
         }
 
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .about .section-title {
+            color: white;
             text-align: center;
         }
 
-        .about-content p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+        .about-content {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .about-intro {
+            text-align: center;
+            color: rgba(255,255,255,0.85);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .about-promise {
+            background: rgba(255,255,255,0.08);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.75rem 2rem;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-promise strong {
+            color: var(--accent);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: block;
+            margin-bottom: 0.6rem;
         }
 
         /* Location */
@@ -434,8 +460,11 @@
     <section id="about" class="about">
         <h2 class="section-title">About Us</h2>
         <div class="about-content">
-            <p>Our camper rentals are a family business started by a love for sharing the outdoors. We (Michelle and Eric) started renting campers out of northern Indiana in 2020,  until we retired and moved our business down to the Lexington and Red River Gorge area.</p>
-            <p>Our kids, software engineers and rock climbing guides, have taken over most of our operations alongside their partners. We pride ourselves on keeping every rental tidy and timely. You'll get your camper exactly when you asked for it in eat-off-the-floor condition. That's our promise.</p>
+            <p class="about-intro">Our camper rentals are a family business started by a love for sharing the outdoors. We (Michelle and Eric) started renting campers out of northern Indiana in 2020, until we retired and moved our business down to the Lexington and Red River Gorge area. Our kids, software engineers and rock climbing guides, have taken over most of our operations alongside their partners.</p>
+            <div class="about-promise">
+                <strong>Our Promise</strong>
+                We pride ourselves on keeping every rental tidy, timely, and homey. We freely include the comforts of home — from coffee to TV to a bed already made — because we know what it's like to live on the road. We also know that planning is stressful, which is why you'll get your camper exactly when you asked for it in eat-off-the-floor condition.
+            </div>
         </div>
     </section>
 
