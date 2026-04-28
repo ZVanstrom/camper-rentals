@@ -39,25 +39,168 @@
         .dropdown-menu a:hover { background: var(--light); color: var(--accent) !important; }
         .nav-dropdown:hover .dropdown-menu { display: block; }
 
-        /* Hero */
-        .camper-hero {
-            padding: 8rem 2rem 4rem; background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%);
-            color: white;
-        }
-        .camper-hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .camper-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.75rem; margin-bottom: 0.5rem; }
-        .camper-hero .year { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; }
-        .camper-hero p { opacity: 0.9; font-size: 1.1rem; margin-bottom: 1.5rem; }
-        .hero-image { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .hero-image img { width: 100%; height: auto; display: block; }
         .price-tag { background: var(--accent); display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 1.25rem; font-weight: 600; }
-        .badge { background: #dc2626; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+
+        /* ── PHOTO CAROUSEL ── */
+        .carousel-section { background: var(--dark); padding: 3rem 2rem 1.5rem; }
+        .carousel-section .section-title { color: white; text-align: center; }
+        .carousel-wrapper { position: relative; max-width: 1100px; margin: 0 auto; }
+
+        .carousel-track-container {
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: grab;
+            user-select: none;
+        }
+        .carousel-track-container.dragging { cursor: grabbing; }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            cursor: grab;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+
+        /* Thumbnails */
+        .carousel-thumbs {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            overflow-x: auto;
+            padding: 10px 5px 0.5rem 5px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) #333;
+            cursor: grab;
+            user-select: none;
+        }
+        .carousel-thumbs::-webkit-scrollbar { height: 4px; }
+        .carousel-thumbs::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+        .carousel-thumb {
+            min-width: 130px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.55;
+            transition: opacity 0.2s, outline 0.2s;
+            outline: 2px solid transparent;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+        .carousel-thumb.active {
+            opacity: 1;
+            outline: 2px solid var(--accent);
+        }
+
+        /* Prev / Next buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.55);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            z-index: 5;
+        }
+        .carousel-btn:hover { background: var(--accent); }
+        .carousel-btn.prev { left: -22px; }
+        .carousel-btn.next { right: -22px; }
+
+        /* Counter */
+        .carousel-counter {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-top: 0.35rem;
+        }
+
+        /* ── LIGHTBOX ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-inner {
+            position: relative;
+            max-width: 92vw;
+            max-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-inner img {
+            max-width: 88vw;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 60px rgba(0,0,0,0.6);
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.8;
+        }
+        .lightbox-close:hover { opacity: 1; color: var(--accent); }
+        .lightbox-btn {
+            background: rgba(255,255,255,0.12);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+        .lightbox-btn:hover { background: var(--accent); }
+        .lightbox-counter {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
 
         /* Content */
         section { padding: 4rem 2rem; }
         .container { max-width: 1200px; margin: 0 auto; }
-        .section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--primary); text-align: center; }
-        .section-subtitle { text-align: center; color: var(--gray); font-size: 1.1rem; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--primary); }
 
         /* Description Section */
         .description-section { background: white; }
@@ -124,15 +267,26 @@
         .contact-info a { margin: 0 1rem; }
 
         @media (max-width: 768px) {
-            .camper-hero-content { grid-template-columns: 1fr; }
-            .camper-hero h1 { font-size: 2rem; }
             .nav-links { display: none; }
             .specs-grid { grid-template-columns: repeat(2, 1fr); }
             .features-grid { grid-template-columns: 1fr; }
+            .carousel-slide img { height: 260px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ── LIGHTBOX ── -->
+    <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lightbox-btn" onclick="lightboxPrev(event)">&#8592;</button>
+        <div class="lightbox-inner">
+            <img id="lightboxImg" src="" alt="Camper photo">
+        </div>
+        <button class="lightbox-btn" onclick="lightboxNext(event)">&#8594;</button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
     <nav>
         <a href="index.html" class="logo">Red River Camper Co.</a>
         <ul class="nav-links">
@@ -150,18 +304,52 @@
         </ul>
     </nav>
 
-    <section class="camper-hero">
-        <div class="camper-hero-content">
-            <div>
-                <span class="badge">🐾 Pets Approved!</span>
-                <p class="year">2021 Model</p>
-                <h1>Grey Wolf Cherokee 26RR Toy Hauler</h1>
-                <p>Glamping-Ready! Your home away from home on wheels with space for all your adventure gear.</p>
-                <a href="#booking" class="price-tag" style="text-decoration: none; color: white; display: inline-block; transition: opacity 0.2s;">Starting at $125/night ↓</a>
+    <!-- ── PHOTO CAROUSEL ── -->
+    <section class="carousel-section" style="padding-top: 7rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 2.75rem; color: white; margin-bottom: 0.75rem;">Grey Wolf Cherokee 26RR Toy Hauler</h1>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.25rem;">Pets welcome! Your adventure-ready home on wheels with garage space for all your gear at the Red River Gorge.</p>
+            <a href="#booking" class="price-tag" style="text-decoration: none; color: white; display: inline-block; transition: opacity 0.2s;">Starting at $125/night ↓</a>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev" onclick="carouselMove(-1)">&#8592;</button>
+            <div class="carousel-track-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide" onclick="openLightbox(0)"><img src="camper_photos/26RR_Photos/IMG_0729.jpg" alt="Exterior"></div>
+                    <div class="carousel-slide" onclick="openLightbox(1)"><img src="camper_photos/26RR_Photos/IMG_0730.jpg" alt="Exterior 2"></div>
+                    <div class="carousel-slide" onclick="openLightbox(2)"><img src="camper_photos/26RR_Photos/IMG_0731.jpg" alt="Exterior 3"></div>
+                    <div class="carousel-slide" onclick="openLightbox(3)"><img src="camper_photos/26RR_Photos/IMG_0733.jpg" alt="Exterior 4"></div>
+                    <div class="carousel-slide" onclick="openLightbox(4)"><img src="camper_photos/26RR_Photos/IMG_0734.jpg" alt="Interior"></div>
+                    <div class="carousel-slide" onclick="openLightbox(5)"><img src="camper_photos/26RR_Photos/IMG_0735.jpg" alt="Interior 2"></div>
+                    <div class="carousel-slide" onclick="openLightbox(6)"><img src="camper_photos/26RR_Photos/IMG_0737.jpg" alt="Interior 3"></div>
+                    <div class="carousel-slide" onclick="openLightbox(7)"><img src="camper_photos/26RR_Photos/IMG_2367.jpg" alt="Detail"></div>
+                    <div class="carousel-slide" onclick="openLightbox(8)"><img src="camper_photos/26RR_Photos/IMG_5426.jpg" alt="Detail 2"></div>
+                    <div class="carousel-slide" onclick="openLightbox(9)"><img src="camper_photos/26RR_Photos/IMG_5431.jpg" alt="Detail 3"></div>
+                    <div class="carousel-slide" onclick="openLightbox(10)"><img src="camper_photos/26RR_Photos/IMG_8984.jpg" alt="Detail 4"></div>
+                    <div class="carousel-slide" onclick="openLightbox(11)"><img src="camper_photos/26RR_Photos/IMG_9628.jpg" alt="Detail 5"></div>
+                    <div class="carousel-slide" onclick="openLightbox(12)"><img src="camper_photos/26RR_Photos/5FD5A67B-6A06-46B5-96BA-1F54683C50F3.jpg" alt="Detail 6"></div>
+                    <div class="carousel-slide" onclick="openLightbox(13)"><img src="camper_photos/26RR_Photos/D37E811A-FFB9-4325-B660-C9A26A65E956.jpg" alt="Detail 7"></div>
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="https://imagedelivery.net/eZKniD8IPo85-tfyHjsV4g/3d2accf1d78068299c4e06dcea6e3d5e.jpeg/width=731,height=469,fit=cover,gravity=0.5x0.5,anim=false" alt="2021 Grey Wolf Cherokee 26RR">
+            <button class="carousel-btn next" onclick="carouselMove(1)">&#8594;</button>
+
+            <div class="carousel-thumbs" id="carouselThumbs">
+                <img class="carousel-thumb active" src="camper_photos/26RR_Photos/IMG_0729.jpg"                              onclick="carouselGoTo(0)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_0730.jpg"                              onclick="carouselGoTo(1)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_0731.jpg"                              onclick="carouselGoTo(2)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_0733.jpg"                              onclick="carouselGoTo(3)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_0734.jpg"                              onclick="carouselGoTo(4)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_0735.jpg"                              onclick="carouselGoTo(5)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_0737.jpg"                              onclick="carouselGoTo(6)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_2367.jpg"                              onclick="carouselGoTo(7)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_5426.jpg"                              onclick="carouselGoTo(8)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_5431.jpg"                              onclick="carouselGoTo(9)"  alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_8984.jpg"                              onclick="carouselGoTo(10)" alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/IMG_9628.jpg"                              onclick="carouselGoTo(11)" alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/5FD5A67B-6A06-46B5-96BA-1F54683C50F3.jpg" onclick="carouselGoTo(12)" alt="">
+                <img class="carousel-thumb"        src="camper_photos/26RR_Photos/D37E811A-FFB9-4325-B660-C9A26A65E956.jpg" onclick="carouselGoTo(13)" alt="">
             </div>
+            <div class="carousel-counter" id="carouselCounter">1 / 14</div>
         </div>
     </section>
 
@@ -222,39 +410,19 @@
                 <p style="font-size: 1.15rem; color: var(--dark); font-weight: 500; text-align: center; margin-top: 2rem;">Perfect for couples, small families, or anyone who wants to camp without roughing it.</p>
                 <p style="font-size: 1.3rem; color: var(--accent); font-weight: 600; text-align: center; margin-top: 1rem;">Let's go glamping, not camping! 🏕️✨</p>
 
-                <!-- Collapsible Technical Details -->
                 <div class="tech-details-toggle" onclick="toggleTechDetails()">
                     <h3>📋 Technical Specifications</h3>
                     <span class="toggle-icon" id="toggleIcon">▼</span>
                 </div>
                 <div class="tech-details-content" id="techDetailsContent">
                     <div class="specs-grid">
-                        <div class="spec-card">
-                            <div class="label">Sleeps</div>
-                            <div class="value">4</div>
-                        </div>
-                        <div class="spec-card">
-                            <div class="label">Length</div>
-                            <div class="value">30 ft</div>
-                        </div>
-                        <div class="spec-card">
-                            <div class="label">Dry Weight</div>
-                            <div class="value">6,250 lbs</div>
-                        </div>
-                        <div class="spec-card">
-                            <div class="label">Garage Length</div>
-                            <div class="value">10 ft</div>
-                        </div>
-                        <div class="spec-card">
-                            <div class="label">Fresh Water</div>
-                            <div class="value">43 gal</div>
-                        </div>
-                        <div class="spec-card">
-                            <div class="label">Fuel Station</div>
-                            <div class="value">30 gal</div>
-                        </div>
+                        <div class="spec-card"><div class="label">Sleeps</div><div class="value">4</div></div>
+                        <div class="spec-card"><div class="label">Length</div><div class="value">30 ft</div></div>
+                        <div class="spec-card"><div class="label">Dry Weight</div><div class="value">6,250 lbs</div></div>
+                        <div class="spec-card"><div class="label">Garage Length</div><div class="value">10 ft</div></div>
+                        <div class="spec-card"><div class="label">Fresh Water</div><div class="value">43 gal</div></div>
+                        <div class="spec-card"><div class="label">Fuel Station</div><div class="value">30 gal</div></div>
                     </div>
-
                     <div class="features-grid">
                         <div class="feature-category">
                             <h4>Sleeping</h4>
@@ -349,6 +517,139 @@
     </footer>
 
     <script>
+        /* ── CAROUSEL ── */
+        let current = 0;
+        const total = 14;
+        const track = document.getElementById('carouselTrack');
+        const thumbs = document.querySelectorAll('.carousel-thumb');
+        const counter = document.getElementById('carouselCounter');
+
+        function carouselGoTo(idx) {
+            current = (idx + total) % total;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+            counter.textContent = `${current + 1} / ${total}`;
+            thumbs[current].scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+        }
+
+        function carouselMove(dir) { carouselGoTo(current + dir); }
+
+        // ── DRAG TO SCROLL ──
+        const trackContainer = document.querySelector('.carousel-track-container');
+        let dragStartX = 0, dragDelta = 0, isDragging = false, wasDrag = false;
+
+        trackContainer.addEventListener('mousedown', e => {
+            dragStartX = e.clientX;
+            dragDelta = 0;
+            isDragging = true;
+            wasDrag = false;
+            trackContainer.classList.add('dragging');
+            e.preventDefault();
+        });
+        window.addEventListener('mousemove', e => {
+            if (!isDragging) return;
+            dragDelta = e.clientX - dragStartX;
+            if (Math.abs(dragDelta) > 5) wasDrag = true;
+        });
+        window.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            trackContainer.classList.remove('dragging');
+            if (dragDelta < -50) carouselMove(1);
+            else if (dragDelta > 50) carouselMove(-1);
+        });
+
+        trackContainer.addEventListener('click', e => {
+            if (wasDrag) { e.stopImmediatePropagation(); wasDrag = false; }
+        }, true);
+
+        // ── THUMBNAIL DRAG SCROLL ──
+        const thumbStrip = document.getElementById('carouselThumbs');
+        let thumbDragStartX = 0, thumbScrollStart = 0, isThumbDragging = false, wasThumbDrag = false;
+
+        thumbStrip.addEventListener('dragstart', e => e.preventDefault());
+
+        thumbStrip.addEventListener('mousedown', e => {
+            thumbDragStartX = e.clientX;
+            thumbScrollStart = thumbStrip.scrollLeft;
+            isThumbDragging = true;
+            wasThumbDrag = false;
+            thumbStrip.style.cursor = 'grabbing';
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        window.addEventListener('mousemove', e => {
+            if (!isThumbDragging) return;
+            const dx = e.clientX - thumbDragStartX;
+            if (Math.abs(dx) > 5) wasThumbDrag = true;
+            thumbStrip.scrollLeft = thumbScrollStart - dx;
+        });
+        window.addEventListener('mouseup', () => {
+            if (!isThumbDragging) return;
+            isThumbDragging = false;
+            thumbStrip.style.cursor = '';
+        });
+        thumbStrip.addEventListener('click', e => {
+            if (wasThumbDrag) { e.stopImmediatePropagation(); wasThumbDrag = false; }
+        }, true);
+
+        /* ── LIGHTBOX ── */
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        let lbIndex = 0;
+
+        const photos = [
+            'camper_photos/26RR_Photos/IMG_0729.jpg',
+            'camper_photos/26RR_Photos/IMG_0730.jpg',
+            'camper_photos/26RR_Photos/IMG_0731.jpg',
+            'camper_photos/26RR_Photos/IMG_0733.jpg',
+            'camper_photos/26RR_Photos/IMG_0734.jpg',
+            'camper_photos/26RR_Photos/IMG_0735.jpg',
+            'camper_photos/26RR_Photos/IMG_0737.jpg',
+            'camper_photos/26RR_Photos/IMG_2367.jpg',
+            'camper_photos/26RR_Photos/IMG_5426.jpg',
+            'camper_photos/26RR_Photos/IMG_5431.jpg',
+            'camper_photos/26RR_Photos/IMG_8984.jpg',
+            'camper_photos/26RR_Photos/IMG_9628.jpg',
+            'camper_photos/26RR_Photos/5FD5A67B-6A06-46B5-96BA-1F54683C50F3.jpg',
+            'camper_photos/26RR_Photos/D37E811A-FFB9-4325-B660-C9A26A65E956.jpg',
+        ];
+
+        function openLightbox(idx) {
+            lbIndex = idx;
+            lightboxImg.src = photos[lbIndex];
+            lightboxCounter.textContent = `${lbIndex + 1} / ${photos.length}`;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closeLightboxOutside(e) {
+            if (e.target === lightbox) closeLightbox();
+        }
+        function lightboxPrev(e) {
+            e.stopPropagation();
+            lbIndex = (lbIndex - 1 + photos.length) % photos.length;
+            lightboxImg.src = photos[lbIndex];
+            lightboxCounter.textContent = `${lbIndex + 1} / ${photos.length}`;
+        }
+        function lightboxNext(e) {
+            e.stopPropagation();
+            lbIndex = (lbIndex + 1) % photos.length;
+            lightboxImg.src = photos[lbIndex];
+            lightboxCounter.textContent = `${lbIndex + 1} / ${photos.length}`;
+        }
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'ArrowLeft')  lightboxPrev(e);
+            if (e.key === 'ArrowRight') lightboxNext(e);
+            if (e.key === 'Escape')     closeLightbox();
+        });
+
+        /* ── TECH DETAILS ── */
         function toggleTechDetails() {
             const content = document.getElementById('techDetailsContent');
             const icon = document.getElementById('toggleIcon');

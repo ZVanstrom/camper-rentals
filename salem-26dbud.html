@@ -110,7 +110,7 @@
         .feature-category li::before { content: "✓"; color: var(--accent); font-weight: bold; }
 
         /* ── PHOTO CAROUSEL ── */
-        .carousel-section { background: var(--dark); padding: 3rem 2rem; }
+        .carousel-section { background: var(--dark); padding: 3rem 2rem 1.5rem; }
         .carousel-section .section-title { color: white; }
         .carousel-wrapper { position: relative; max-width: 1100px; margin: 0 auto; }
         .carousel-track-container { overflow: hidden; border-radius: 12px; cursor: grab; user-select: none; }
@@ -120,14 +120,14 @@
         .carousel-slide img { width: 100%; height: 520px; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
         .carousel-thumbs {
             display: flex; gap: 0.5rem; margin-top: 1rem;
-            overflow-x: auto; padding-bottom: 0.5rem;
+            overflow-x: auto; padding: 10px 5px 0.5rem 5px;
             scrollbar-width: thin; scrollbar-color: var(--accent) #333;
             cursor: grab; user-select: none;
         }
         .carousel-thumbs::-webkit-scrollbar { height: 4px; }
         .carousel-thumbs::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
         .carousel-thumb {
-            min-width: 80px; height: 55px; object-fit: cover; border-radius: 6px;
+            min-width: 130px; height: 90px; object-fit: cover; border-radius: 6px;
             cursor: pointer; opacity: 0.5; transition: opacity 0.2s, outline 0.2s;
             outline: 2px solid transparent;
         }
@@ -142,7 +142,7 @@
         .carousel-btn:hover { background: var(--accent); }
         .carousel-btn.prev { left: -22px; }
         .carousel-btn.next { right: -22px; }
-        .carousel-counter { text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 0.75rem; }
+        .carousel-counter { text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 0.35rem; }
 
         /* ── LIGHTBOX ── */
         .lightbox {
