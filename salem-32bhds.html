@@ -252,11 +252,87 @@
 
         /* Booking */
         .booking-section { background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%); color: white; }
-        .booking-cta { text-align: center; max-width: 600px; margin: 0 auto; }
+        .booking-cta { text-align: center; max-width: 700px; margin: 0 auto; }
         .booking-cta h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; color: white; }
         .booking-cta p { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 2rem; }
         .book-btn { display: inline-block; background: var(--accent); color: white; padding: 1.25rem 3rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.2rem; margin-bottom: 1rem; transition: background 0.2s; }
         .book-btn:hover { background: #b45309; }
+
+        /* Booqable widget styling */
+        .booqable-booking-widget {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(8px);
+        }
+        .booqable-booking-widget h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .booqable-booking-widget .widget-subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Booqable product-button widget — light branding only,
+           let the widget handle its own internal layout */
+        .booqable-booking-widget .booqable-product-button {
+            font-family: 'Inter', sans-serif;
+            margin-top: 0.5rem;
+        }
+
+        /* Style only real <button> elements inside the widget (not arbitrary
+           class-name matches, which were destroying the date picker layout) */
+        .booqable-booking-widget .booqable-product-button button {
+            background: var(--accent) !important;
+            color: white !important;
+            border: none !important;
+            padding: 1rem 2.5rem !important;
+            border-radius: 8px !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 1.1rem !important;
+            cursor: pointer !important;
+            transition: background 0.2s !important;
+        }
+        .booqable-booking-widget .booqable-product-button button:hover {
+            background: #b45309 !important;
+        }
+
+        /* Style only real <input> elements (date fields) — keep dark text
+           on a light field so values are visible against the dark hero bg */
+        .booqable-booking-widget .booqable-product-button input {
+            background: rgba(255,255,255,0.95) !important;
+            border: 2px solid rgba(255,255,255,0.3) !important;
+            border-radius: 8px !important;
+            padding: 0.85rem 1rem !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.95rem !important;
+            color: var(--dark) !important;
+        }
+
+        .booking-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .booking-divider::before,
+        .booking-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+        }
 
         /* Footer */
         footer { background: var(--dark); color: white; padding: 3rem 2rem; text-align: center; }
@@ -498,6 +574,12 @@
             <div class="booking-cta">
                 <h2>Experience Luxury Camping</h2>
                 <p>Book our flagship camper and discover what glamping is really all about. Your Red River adventure awaits!</p>
+                <div class="booqable-booking-widget">
+                    <h3>Check Availability & Book</h3>
+                    <p class="widget-subtitle">Select your dates to reserve the Salem 32BHDS</p>
+                    <div class="booqable-product-button" data-id="32bdhs"></div>
+                </div>
+                <div class="booking-divider"><span>or</span></div>
                 <a href="https://rvshare.com/rvs/details/1762605" target="_blank" class="book-btn">Book on RVShare →</a>
                 <div style="margin-top: 2rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 1.25rem 1.75rem; max-width: 480px; margin-left: auto; margin-right: auto;">
                     <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem;">💰 Skip the platform, save big.</p>
