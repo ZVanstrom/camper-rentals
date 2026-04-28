@@ -119,7 +119,7 @@
         .carousel-slide { min-width: 100%; cursor: grab; }
         .carousel-slide img { width: 100%; height: 520px; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
         .carousel-thumbs {
-            display: flex; gap: 0.5rem; margin-top: 1rem;
+            display: flex; gap: 0.5rem; margin-top: 0;
             overflow-x: auto; padding: 10px 5px 0.5rem 5px;
             scrollbar-width: thin; scrollbar-color: var(--accent) #333;
             cursor: grab; user-select: none;
@@ -135,13 +135,13 @@
         .carousel-btn {
             position: absolute; top: calc(50% - 28px); transform: translateY(-50%);
             background: rgba(0,0,0,0.55); color: white; border: none;
-            width: 44px; height: 44px; border-radius: 50%; font-size: 1.25rem;
+            width: 54px; height: 54px; border-radius: 50%; font-size: 1.5rem;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s; z-index: 5;
+            padding-bottom: 3px; transition: background 0.2s; z-index: 5;
         }
         .carousel-btn:hover { background: var(--accent); }
-        .carousel-btn.prev { left: -22px; }
-        .carousel-btn.next { right: -22px; }
+        .carousel-btn.prev { left: -27px; }
+        .carousel-btn.next { right: -27px; }
         .carousel-counter { text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 0.35rem; }
 
         /* ── LIGHTBOX ── */

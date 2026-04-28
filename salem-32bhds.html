@@ -95,7 +95,7 @@
         .carousel-thumbs {
             display: flex;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-top: 0;
             overflow-x: auto;
             padding: 10px 5px 0.5rem 5px;
             scrollbar-width: thin;
@@ -130,20 +130,21 @@
             background: rgba(0,0,0,0.55);
             color: white;
             border: none;
-            width: 44px;
-            height: 44px;
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding-bottom: 3px;
             transition: background 0.2s;
             z-index: 5;
         }
         .carousel-btn:hover { background: var(--accent); }
-        .carousel-btn.prev { left: -22px; }
-        .carousel-btn.next { right: -22px; }
+        .carousel-btn.prev { left: -27px; }
+        .carousel-btn.next { right: -27px; }
 
         /* Counter */
         .carousel-counter {
