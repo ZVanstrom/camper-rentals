@@ -1,0 +1,10 @@
+[ -104557ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.doubleclick.net/instream/ad_status.js:0
+[ -104556ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://googleads.g.doubleclick.net/pagead/id:0
+[     413ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.doubleclick.net/instream/ad_status.js:0
+[     413ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://googleads.g.doubleclick.net/pagead/id:0
+[ -104557ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.doubleclick.net/instream/ad_status.js:0
+[ -104556ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://googleads.g.doubleclick.net/pagead/id:0
+[     413ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.doubleclick.net/instream/ad_status.js:0
+[     413ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://googleads.g.doubleclick.net/pagead/id:0
+[   41436ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://googleads.g.doubleclick.net/pagead/id:0
+[   41468ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.doubleclick.net/instream/ad_status.js:0

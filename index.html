@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red River Camper Co. | Camper Rentals near Red River Gorge</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/shared.css">
@@ -116,6 +117,8 @@
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .camper-card:hover {
@@ -142,6 +145,9 @@
 
         .camper-info {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .camper-info h3 {
@@ -176,6 +182,7 @@
             color: var(--gray);
             font-size: 0.95rem;
             margin-bottom: 1rem;
+            flex: 1;
         }
 
         .camper-btn {
@@ -261,6 +268,12 @@
             border-radius: 16px;
             padding: 2rem;
             backdrop-filter: blur(4px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
         }
 
         .about-card-label {
@@ -349,7 +362,7 @@
 
         /* FAQ */
         .faq {
-            background: var(--light);
+            background: #b2c4b0;
         }
 
         .faq-list {
@@ -459,7 +472,7 @@
             <!-- Camper 1 -->
             <div class="camper-card">
                 <div class="camper-image">
-                    <img src="https://assets-cdn.interactcp.com/meyersrvsuperstores/unit_photo/imgh_800x600-wm_meyersrvsuperstores_com-m0909202409480359/unit_photo_202409090248035969411440.jpg" alt="2025 Salem 26DBUD Travel Trailer">
+                    <img src="camper_photos/26DBUD_photos/1_exterior.jpg" alt="2025 Salem 26DBUD Travel Trailer">
                 </div>
                 <div class="camper-info">
                     <p class="year">2025 Model</p>
@@ -496,7 +509,7 @@
             <!-- Camper 3 -->
             <div class="camper-card">
                 <div class="camper-image">
-                    <img src="https://imagedelivery.net/eZKniD8IPo85-tfyHjsV4g/3d2accf1d78068299c4e06dcea6e3d5e.jpeg/width=731,height=469,fit=cover,gravity=0.5x0.5,anim=false" alt="2021 Grey Wolf Cherokee 26RR Toy Hauler">
+                    <img src="camper_photos/26RR_Photos/IMG_9628.jpg" alt="2021 Grey Wolf Cherokee 26RR Toy Hauler">
                 </div>
                 <div class="camper-info">
                     <p class="year">2021 Model</p>
@@ -551,7 +564,7 @@
                 <p style="margin-top: 1.2rem;"><strong>🏕️ Setup Service Available:</strong> We offer full camper setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Slade — just steps from great coffee, trails, and everything the Gorge has to offer. Ask us about delivery & setup pricing!</p>
             </div>
             <div class="location-map">
-                <iframe src="https://maps.google.com/maps?q=37.7903,-83.7025&z=13&t=k&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://maps.google.com/maps?q=37.7903,-83.7025&z=11&t=k&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
@@ -579,7 +592,7 @@
                         <li>Outdoor chairs</li>
                         <li>Full propane tank</li>
                         <li>Toilet paper</li>
-                        <li>Generator &amp; gas can<br><span style="font-size: 0.85rem; color: #888;">(can be pre-filled at cost)</span></li>
+                        <li>Generator &amp; gas can <span style="font-size: 0.85rem; color: #999; font-weight: 400;">(can be pre-filled at cost)</span></li>
                         <li>First aid kit</li>
                     </ul>
                 </div>

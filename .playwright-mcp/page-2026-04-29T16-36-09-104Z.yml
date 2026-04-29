@@ -1,0 +1,210 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Red River Camper Co." [ref=e3] [cursor=pointer]:
+      - /url: "#"
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "Our Campers ▾" [ref=e6] [cursor=pointer]:
+          - /url: "#campers"
+      - listitem [ref=e7]:
+        - link "Location" [ref=e8] [cursor=pointer]:
+          - /url: "#location"
+      - listitem [ref=e9]:
+        - link "FAQ" [ref=e10] [cursor=pointer]:
+          - /url: "#faq"
+      - listitem [ref=e11]:
+        - link "Book Now" [ref=e12] [cursor=pointer]:
+          - /url: "#book"
+  - generic [ref=e13]:
+    - iframe [ref=e14]:
+      - generic [active] [ref=f1e1]:
+        - generic "YouTube Video Player" [ref=f1e3]
+        - generic [ref=f1e6]:
+          - generic:
+            - generic:
+              - button "Hide player controls" [ref=f1e7] [cursor=pointer]
+              - generic [ref=f1e9]:
+                - generic:
+                  - generic [ref=f1e14]:
+                    - generic [ref=f1e15]:
+                      - link "Chimney Top Rock & MORE at the Red River Gorge | 4K Drone Footage" [ref=f1e16] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=1z9Ywn61fZM
+                      - link "Revived" [ref=f1e17] [cursor=pointer]:
+                        - /url: /channel/UCiXP1Zc68ysaw4eMElodS6A
+                        - generic [ref=f1e18]: Revived
+                    - generic [ref=f1e19]:
+                      - button [ref=f1e20] [cursor=pointer]
+                      - generic [ref=f1e22]:
+                        - generic: Revived
+                        - generic: 30 subscribers
+                  - generic [ref=f1e23]:
+                    - generic:
+                      - generic:
+                        - button "Previous video":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                      - button "Rewind 10 seconds"
+                      - generic:
+                        - button "Play video":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                      - button "Fast forward 10 seconds"
+                      - generic:
+                        - button "Next video" [disabled]:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                - generic [ref=f1e26]:
+                  - button "Share" [ref=f1e30] [cursor=pointer]:
+                    - generic [ref=f1e34]:
+                      - img
+                  - generic [ref=f1e38]:
+                    - button "More videos" [ref=f1e41] [cursor=pointer]:
+                      - generic [ref=f1e42]: More videos
+                    - link "Watch on YouTube" [ref=f1e49] [cursor=pointer]:
+                      - /url: https://www.youtube.com/watch?v=1z9Ywn61fZM
+                      - img [ref=f1e53]:
+                        - generic [ref=f1e55]:
+                          - img
+    - generic [ref=e16]:
+      - heading "Red River Camper Co." [level=1] [ref=e17]
+      - paragraph [ref=e18]: Premium camper rentals based in Slade, KY, right at the doorstep of the Red River Gorge. Your adventure in Kentucky's most stunning wilderness starts here.
+      - link "Explore Our Fleet" [ref=e19] [cursor=pointer]:
+        - /url: "#campers"
+  - generic [ref=e20]:
+    - heading "Our Campers" [level=2] [ref=e21]
+    - paragraph [ref=e22]: Three quality campers ready for your Red River Gorge adventure. Each unit is well-maintained and fully equipped.
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - img "2025 Salem 26DBUD Travel Trailer" [ref=e26]
+        - generic [ref=e27]:
+          - paragraph [ref=e28]: 2025 Model
+          - heading "Salem 26DBUD" [level=3] [ref=e29]
+          - generic [ref=e30]:
+            - generic [ref=e31]: Bunk House
+            - generic [ref=e32]: Sleeps 8
+            - generic [ref=e33]: Outdoor Kitchen
+          - paragraph [ref=e34]: Perfect for families. Double-over-double bunks and a private master bedroom make this ideal for groups.
+          - link "Explore This Camper" [ref=e35] [cursor=pointer]:
+            - /url: salem-26dbud.html
+      - generic [ref=e36]:
+        - img "2025 Salem 32BHDS Travel Trailer" [ref=e38]
+        - generic [ref=e39]:
+          - paragraph [ref=e40]: 2025 Model
+          - heading "Salem 32BHDS" [level=3] [ref=e41]
+          - generic [ref=e42]:
+            - generic [ref=e43]: Bunk Room
+            - generic [ref=e44]: Sleeps 10
+            - generic [ref=e45]: 2 Bedrooms
+            - generic [ref=e46]: Outdoor Kitchen
+          - paragraph [ref=e47]: Our largest camper with maximum space and comfort. Two bedrooms, a dedicated bunk room, and all the amenities for an unforgettable stay.
+          - link "Explore This Camper" [ref=e48] [cursor=pointer]:
+            - /url: salem-32bhds.html
+      - generic [ref=e49]:
+        - img "2021 Grey Wolf Cherokee 26RR Toy Hauler" [ref=e51]
+        - generic [ref=e52]:
+          - paragraph [ref=e53]: 2021 Model
+          - heading "Grey Wolf Cherokee 26RR" [level=3] [ref=e54]
+          - generic [ref=e55]:
+            - generic [ref=e56]: Toy Hauler
+            - generic [ref=e57]: Sleeps 4
+            - generic [ref=e58]: Outdoor Patio
+          - paragraph [ref=e59]: Bring your toys! This toy hauler has a rear garage perfect for ATVs, bikes, kayaks, or extra gear.
+          - link "Explore This Camper" [ref=e60] [cursor=pointer]:
+            - /url: grey-wolf-26rr.html
+  - generic [ref=e62]:
+    - paragraph [ref=e63]: Who We Are
+    - heading "About Us" [level=2] [ref=e64]
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - paragraph [ref=e67]: Our Story
+        - paragraph [ref=e68]: Red River Camper Co. is a family business started by a love for sharing the outdoors. We (Michelle and Eric) started renting campers out of northern Indiana in 2020, until we retired and moved our business down to the Lexington and Red River Gorge area. Our kids, software engineers and rock climbing guides, have taken over most of our operations alongside their partners.
+      - generic [ref=e69]:
+        - paragraph [ref=e70]: Our Promise
+        - paragraph [ref=e71]: We pride ourselves on keeping every rental tidy, timely, and homey. We freely include the comforts of home — from coffee to TV to a bed already made — because we know what it's like to live on the road. We also know that planning is stressful, which is why you'll get your camper exactly when you asked for it in eat-off-the-floor condition.
+  - generic [ref=e72]:
+    - heading "Location" [level=2] [ref=e73]
+    - paragraph [ref=e74]: Perfectly positioned near the Red River Gorge for easy access to all the best outdoor activities.
+    - generic [ref=e75]:
+      - generic [ref=e76]:
+        - 'heading "Based in Slade, KY: Gateway to the Red River Gorge" [level=3] [ref=e77]'
+        - paragraph [ref=e78]: "Our campers are stored right in Slade, minutes from everything the Red River Gorge has to offer:"
+        - list [ref=e79]:
+          - listitem [ref=e80]: ✓ World-class rock climbing at the Red
+          - listitem [ref=e81]: ✓ 100+ miles of hiking trails
+          - listitem [ref=e82]: ✓ Natural Bridge State Park
+          - listitem [ref=e83]: ✓ Swimming holes & cliff jumping
+          - listitem [ref=e84]: ✓ Miguel's Pizza (a local legend)
+          - listitem [ref=e85]: ✓ Nada Tunnel & scenic drives
+        - paragraph [ref=e86]:
+          - strong [ref=e87]: "🏕️ Setup Service Available:"
+          - text: We offer full camper setup at the
+          - link "Daniel Boone Coffee House RV Parking" [ref=e88] [cursor=pointer]:
+            - /url: https://www.danielboonecoffeeshop.com/
+          - text: in Slade — just steps from great coffee, trails, and everything the Gorge has to offer. Ask us about delivery & setup pricing!
+      - iframe [ref=e90]:
+        
+  - generic [ref=e91]:
+    - heading "Frequently Asked Questions" [level=2] [ref=e92]
+    - paragraph [ref=e93]: Everything you need to know before booking.
+    - generic [ref=e94]:
+      - generic [ref=e95]:
+        - heading "Do I need my own truck to tow?" [level=3] [ref=e96]
+        - paragraph [ref=e97]:
+          - text: No truck needed! We offer full delivery and setup service. A popular option is setup at the
+          - link "Daniel Boone Coffee House RV Parking" [ref=e98] [cursor=pointer]:
+            - /url: https://www.danielboonecoffeeshop.com/
+          - text: in Slade — convenient, central, and right in the heart of the Gorge. We also deliver to any campground of your choosing at $5 per mile with a minimum charge of $100, which includes full setup at your destination.
+      - generic [ref=e99]:
+        - heading "Where can I take the camper?" [level=3] [ref=e100]
+        - paragraph [ref=e101]: "Long story short, we're flexible. We'll deliver up to 100 miles no problem and we have no issue with you taking our campers around the region. At the end of the day, we're a small family business and we'll do what we can to accommodate your vacation. Tell us about your plans and we'll tell you what we can do. No hidden fees and no wasting your time: our goal is to make it happen or direct you to someone who can."
+      - generic [ref=e102]:
+        - heading "What's included with the rental?" [level=3] [ref=e103]
+        - list [ref=e105]:
+          - listitem [ref=e106]: Basic kitchen supplies
+          - listitem [ref=e107]: Bedding & pillows
+          - listitem [ref=e108]: Outdoor chairs
+          - listitem [ref=e109]: Full propane tank
+          - listitem [ref=e110]: Toilet paper
+          - listitem [ref=e111]:
+            - text: Generator & gas can
+            - text: (can be pre-filled at cost)
+          - listitem [ref=e112]: First aid kit
+        - paragraph [ref=e113]: Just bring your clothes, food, and sense of adventure!
+      - generic [ref=e114]:
+        - heading "What is your cancellation policy?" [level=3] [ref=e115]
+        - paragraph [ref=e116]: We offer full refunds for cancellations made 14+ days before your trip. Cancellations within 14 days receive a 50% refund or full credit toward a future booking.
+      - generic [ref=e117]:
+        - heading "Is there a security deposit?" [level=3] [ref=e118]
+        - paragraph [ref=e119]: Yes, we require a $200 refundable security deposit. The deposit is returned after the camper is inspected following your rental. If you cancel more than 14 days prior to your rental start date, the deposit will also be fully refunded.
+  - generic [ref=e120]:
+    - heading "Ready for Your Adventure?" [level=2] [ref=e121]
+    - paragraph [ref=e122]: Book your camper today and start planning your Red River Gorge getaway.
+    - link "Book on RVShare →" [ref=e123] [cursor=pointer]:
+      - /url: https://rvshare.com/rvs/details/1743822
+    - generic [ref=e124]:
+      - paragraph [ref=e125]: 💰 Skip the platform, save big.
+      - paragraph [ref=e126]:
+        - text: Book directly with us and save
+        - strong [ref=e127]: 30%+
+        - text: — same camper, no platform fees.
+      - link "Email Us to Book Direct →" [ref=e128] [cursor=pointer]:
+        - /url: mailto:booking@red-river-campers.com
+      - paragraph [ref=e129]:
+        - text: or call
+        - link "(260) 205-9145" [ref=e130] [cursor=pointer]:
+          - /url: tel:+12602059145
+  - contentinfo [ref=e131]:
+    - generic [ref=e132]:
+      - link "booking@red-river-campers.com" [ref=e133] [cursor=pointer]:
+        - /url: mailto:booking@red-river-campers.com
+      - link "(260) 205-9145" [ref=e134] [cursor=pointer]:
+        - /url: tel:+12602059145
+    - paragraph [ref=e135]: © 2026 Red River Camper Co. | Slade, Kentucky
