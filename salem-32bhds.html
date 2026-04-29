@@ -11,6 +11,71 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         .badge { background: #7c3aed; }
+        .description-section { background: #b2c4b0; padding-top: 1.5rem; }
+
+        .tech-details-wrapper {
+            margin: 3rem 0 1rem;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            background: var(--light);
+            overflow: hidden;
+        }
+
+        .tech-details-wrapper .spec-card {
+            border: 1px solid #94a3b8;
+        }
+
+
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin: 1.75rem 0 2rem;
+        }
+
+        .feature-card {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 0.275rem 1.25rem 0.475rem 1.4rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .feature-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .feature-card li {
+            font-size: 1rem;
+            color: var(--dark);
+            padding: 0.45rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .feature-card li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -47,7 +112,7 @@
         <div style="text-align: center; margin-bottom: 2rem;">
             <h1 style="font-family: 'Playfair Display', serif; font-size: 2.75rem; color: white; margin-bottom: 0.75rem;">Salem 32BHDS</h1>
             <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.25rem;">Our largest and most luxurious camper. When only the best will do for your Red River adventure!</p>
-            <a href="#booking" class="price-tag" style="text-decoration: none; color: white; display: inline-block; transition: opacity 0.2s;">Starting at $150/night ↓</a>
+            <a href="#booking" class="price-tag" style="text-decoration: none; color: white; display: inline-block; transition: opacity 0.2s;">Starting at $130/night ↓</a>
         </div>
         <div class="carousel-wrapper">
             <button class="carousel-btn prev" onclick="carouselMove(-1)">&#8592;</button>
@@ -99,51 +164,64 @@
     <section class="description-section">
         <div class="container">
             <div class="description-content">
-                <h2>Luxury Glamping Meets Adventure!</h2>
-                <p>Welcome to the crown jewel of our fleet, the 2025 Salem 32BHDS! This isn't just camping... this is five-star outdoor living. With spacious slide-outs, two bedrooms, and luxury amenities throughout, you'll never want to leave.</p>
+                <h2>Our Largest Camper</h2>
+                <p>The 32BHDS is a 2025 Salem with two full bedrooms, two slide-outs, and space for up to eight. It's the right choice for larger groups who don't want to compromise on comfort.</p>
 
-                <h3>👪 Sleeps 10 in Comfort & Style</h3>
-                <ul>
-                    <li>Private king master bedroom</li>
-                    <li>Dedicated bunk room with 4 full-size bunks (and its own door!)</li>
-                    <li>Convertible theater seating in the living room</li>
-                    <li>Convertible dinette for overflow guests</li>
-                    <li>Room for everyone without feeling cramped</li>
-                </ul>
-
-                <h3>🏠 Residential-Style Living Space</h3>
-                <ul>
-                    <li>Multiple slide-outs for maximum interior space</li>
-                    <li>Theater seating with recliners, perfect for movie nights</li>
-                    <li>Cozy electric fireplace for ambiance</li>
-                    <li>Residential flooring throughout</li>
-                    <li>Multiple ceiling fans and premium lighting</li>
-                </ul>
-
-                <h3>👨‍🍳 Chef's Dream Kitchen</h3>
-                <ul>
-                    <li>Full-size 12 cu ft residential refrigerator</li>
-                    <li>3-burner stove with full oven</li>
-                    <li>Large microwave</li>
-                    <li>Kitchen island with prep space</li>
-                    <li>Deep sink with pull-down sprayer</li>
-                    <li>Outdoor kitchen for grilling enthusiasts</li>
-                </ul>
-
-                <h3>❄️ Climate Control Like Home</h3>
-                <ul>
-                    <li>DUAL A/C units (30,000 BTU total), stay cool even on the hottest days</li>
-                    <li>Dual furnaces for cozy winter camping</li>
-                    <li>Heated and enclosed underbelly for year-round camping</li>
-                </ul>
-
-                <h3>🌅 Massive Outdoor Living</h3>
-                <ul>
-                    <li>Full outdoor kitchen</li>
-                    <li>Exterior entertainment center</li>
-                    <li>Huge pass-through storage for all your gear</li>
-                    <li>Outdoor shower for post-hike rinses</li>
-                </ul>
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <h3>🛏️ Sleeping</h3>
+                        <ul>
+                            <li>Queen master bedroom</li>
+                            <li>Bunk room: 2 twin bunks + queen convertible sofa</li>
+                            <li>Convertible dinette</li>
+                            <li>Linens included for all sleeping spaces</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🛋️ Living Space</h3>
+                        <ul>
+                            <li>Two slide-outs</li>
+                            <li>Convertible sofa</li>
+                            <li>55" 4K smart TV</li>
+                            <li>Dinette w/ 2 chairs</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🍳 Kitchen</h3>
+                        <ul>
+                            <li>12 cu ft refrigerator</li>
+                            <li>3-burner stove with oven</li>
+                            <li>Microwave</li>
+                            <li>Sink with pull-down sprayer</li>
+                            <li>Keurig w/ K-cups</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🌡️ Climate</h3>
+                        <ul>
+                            <li>13,500 BTU rooftop A/C</li>
+                            <li>Furnace</li>
+                            <li>Electric fireplace</li>
+                            <li>Heated &amp; enclosed underbelly</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🌲 Outdoor</h3>
+                        <ul>
+                            <li>Outdoor kitchen w/ grill, fridge &amp; sink</li>
+                            <li>2 chairs, sidetable &amp; rug</li>
+                            <li>Pass-through storage</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✨ Add-on Extras</h3>
+                        <ul>
+                            <li>Starlink — $60/rental</li>
+                            <li>Generator — $10/day</li>
+                            <li>Espresso machine — $10/day</li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="highlight-box">
                     <p><strong>📍 Pickup:</strong> Slade, KY (Gateway to Red River Gorge)</p>
@@ -152,84 +230,17 @@
                     <p><strong>🎯 Best For:</strong> Large families, multi-family trips, extended stays, or anyone who refuses to compromise on comfort</p>
                 </div>
 
-                <p style="font-size: 1.3rem; color: var(--accent); font-weight: 600; text-align: center; margin-top: 1rem;">Why settle for less when you can have it all? 🏔️✨</p>
-
-                <div class="tech-details-toggle" onclick="toggleTechDetails()">
-                    <h3>📋 Technical Specifications</h3>
-                    <span class="toggle-icon" id="toggleIcon">▼</span>
-                </div>
-                <div class="tech-details-content" id="techDetailsContent">
-                    <div class="specs-grid">
-                        <div class="spec-card"><div class="label">Sleeps</div><div class="value">10</div></div>
-                        <div class="spec-card"><div class="label">Length</div><div class="value">38 ft</div></div>
-                        <div class="spec-card"><div class="label">Dry Weight</div><div class="value">9,456 lbs</div></div>
-                        <div class="spec-card"><div class="label">Fresh Water</div><div class="value">60 gal</div></div>
+                <div class="tech-details-wrapper">
+                    <h3 style="font-family:'Inter',sans-serif; font-size:1.05rem; font-weight:700; color:var(--dark); padding:1.1rem 1.5rem 0.75rem; margin:0;">📋 Technical Specifications</h3>
+                    <div class="specs-grid" style="padding: 0 1.5rem 1.5rem;">
+                        <div class="spec-card"><div class="label">Sleeps</div><div class="value">8</div></div>
+                        <div class="spec-card"><div class="label">Length</div><div class="value">36 ft 5 in</div></div>
+                        <div class="spec-card"><div class="label">Dry Weight</div><div class="value">7,993 lbs</div></div>
+                        <div class="spec-card"><div class="label">Fresh Water</div><div class="value">40 gal</div></div>
+                        <div class="spec-card"><div class="label">Grey Water</div><div class="value">57 gal</div></div>
+                        <div class="spec-card"><div class="label">Black Water</div><div class="value">30 gal</div></div>
                         <div class="spec-card"><div class="label">Bedrooms</div><div class="value">2</div></div>
-                        <div class="spec-card"><div class="label">Slide Outs</div><div class="value">3</div></div>
-                    </div>
-                    <div class="features-grid">
-                        <div class="feature-category">
-                            <h4>Sleeping</h4>
-                            <ul>
-                                <li>King master bedroom</li>
-                                <li>Private bunk room (4 bunks)</li>
-                                <li>Convertible sofa bed</li>
-                                <li>Convertible dinette</li>
-                                <li>Blackout shades throughout</li>
-                            </ul>
-                        </div>
-                        <div class="feature-category">
-                            <h4>Kitchen</h4>
-                            <ul>
-                                <li>3-burner gas stove with oven</li>
-                                <li>Full-size microwave</li>
-                                <li>12 cu ft residential refrigerator</li>
-                                <li>Sink with pull-down sprayer</li>
-                                <li>Walk-in pantry storage</li>
-                                <li>Kitchen island with seating</li>
-                            </ul>
-                        </div>
-                        <div class="feature-category">
-                            <h4>Bathroom</h4>
-                            <ul>
-                                <li>Full bathroom with shower</li>
-                                <li>Porcelain toilet</li>
-                                <li>Vanity with storage</li>
-                                <li>Linen closet</li>
-                            </ul>
-                        </div>
-                        <div class="feature-category">
-                            <h4>Living Space</h4>
-                            <ul>
-                                <li>3 slide-outs for max space</li>
-                                <li>Theater seating with recliners</li>
-                                <li>Electric fireplace</li>
-                                <li>Ceiling fans</li>
-                                <li>Residential flooring</li>
-                                <li>Day/night window shades</li>
-                            </ul>
-                        </div>
-                        <div class="feature-category">
-                            <h4>Climate & Comfort</h4>
-                            <ul>
-                                <li>Dual A/C units (30,000 BTU)</li>
-                                <li>Dual furnaces</li>
-                                <li>Heated tanks</li>
-                                <li>USB ports throughout</li>
-                                <li>LED lighting with dimmers</li>
-                                <li>Premium sound system</li>
-                            </ul>
-                        </div>
-                        <div class="feature-category">
-                            <h4>Exterior</h4>
-                            <ul>
-                                <li>Outdoor kitchen</li>
-                                <li>Outdoor TV hookup</li>
-                                <li>Pass-through storage</li>
-                                <li>Exterior shower</li>
-                                <li>Power stabilizer jacks</li>
-                            </ul>
-                        </div>
+                        <div class="spec-card"><div class="label">Slide Outs</div><div class="value">2</div></div>
                     </div>
                 </div>
             </div>

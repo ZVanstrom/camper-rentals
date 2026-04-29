@@ -115,21 +115,22 @@
 
         .camper-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.13), 0 2px 6px rgba(0,0,0,0.07);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .camper-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transform: translateY(-7px);
+            box-shadow: 0 18px 48px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.09);
         }
 
         .camper-image {
-            height: 220px;
+            height: 245px;
             background: linear-gradient(135deg, var(--primary), #3d7a5f);
             display: flex;
             align-items: center;
@@ -178,6 +179,7 @@
             border-radius: 20px;
             font-size: 0.8rem;
             color: #3a5c45;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
         }
 
         .camper-info p {
@@ -192,20 +194,25 @@
 
         .camper-btn {
             display: block;
-            background: var(--primary);
+            background: var(--accent);
             color: white;
-            padding: 0.6rem 1.25rem;
-            border-radius: 6px;
+            padding: 0.7rem 1.25rem;
+            border-radius: 8px;
+            border: 2px solid #b45309;
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
-            transition: background 0.2s;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
             text-align: center;
             margin-top: 1rem;
+            box-shadow: 0 2px 8px rgba(217,119,6,0.3);
+            letter-spacing: 0.01em;
         }
 
         .camper-btn:hover {
-            background: #0f2920;
+            background: #b45309;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 16px rgba(217,119,6,0.4);
         }
 
         /* About */
@@ -463,7 +470,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Red River Camper Co.</h1>
-            <p>Premium camper rentals based in Slade, KY, right at the doorstep of the Red River Gorge. Your adventure in Kentucky's most stunning wilderness starts here.</p>
+            <p>Premium camper rentals based in Stanton, KY, right at the doorstep of the Red River Gorge. Your adventure in Kentucky's most stunning wilderness starts here.</p>
             <a href="#campers" class="hero-btn">Explore Our Fleet</a>
         </div>
     </section>
@@ -488,7 +495,7 @@
                         <span class="spec-tag">Outdoor Kitchen</span>
                     </div>
                     <p>Perfect for families. Double-over-double bunks and a private master bedroom make this ideal for groups.</p>
-                    <a href="salem-26dbud.html" class="camper-btn">Explore This Camper</a>
+                    <a href="salem-26dbud.html" class="camper-btn">Explore the 26DBUD</a>
                 </div>
             </div>
 
@@ -502,12 +509,12 @@
                     <h3>Salem 32BHDS</h3>
                     <div class="camper-specs">
                         <span class="spec-tag">Bunk Room</span>
-                        <span class="spec-tag">Sleeps 10</span>
+                        <span class="spec-tag">Sleeps 8</span>
                         <span class="spec-tag">2 Bedrooms</span>
                         <span class="spec-tag">Outdoor Kitchen</span>
                     </div>
-                    <p>Our largest camper with maximum space and comfort. Two bedrooms, a dedicated bunk room, and all the amenities for an unforgettable stay.</p>
-                    <a href="salem-32bhds.html" class="camper-btn">Explore This Camper</a>
+                    <p>Our largest camper. Two bedrooms, a private bunk room, and two slide-outs — plenty of space for a bigger group.</p>
+                    <a href="salem-32bhds.html" class="camper-btn">Explore the 32BHDS</a>
                 </div>
             </div>
 
@@ -525,7 +532,7 @@
                         <span class="spec-tag">Outdoor Patio</span>
                     </div>
                     <p>Bring your toys! This toy hauler has a rear garage perfect for ATVs, bikes, kayaks, or extra gear.</p>
-                    <a href="grey-wolf-26rr.html" class="camper-btn">Explore This Camper</a>
+                    <a href="grey-wolf-26rr.html" class="camper-btn">Explore the 26RR</a>
                 </div>
             </div>
         </div>
@@ -556,8 +563,8 @@
 
         <div class="location-content">
             <div class="location-text">
-                <h3>Based in Slade, KY: Gateway to the Red River Gorge</h3>
-                <p>Our campers are stored right in Slade, minutes from everything the Red River Gorge has to offer:</p>
+                <h3>Based in Stanton, KY: Gateway to the Red River Gorge</h3>
+                <p>Our campers are stored right in Stanton, minutes from everything the Red River Gorge has to offer:</p>
                 <ul class="location-features">
                     <li>World-class rock climbing at the Red</li>
                     <li>100+ miles of hiking trails</li>
@@ -626,12 +633,17 @@
     <section id="book" class="cta">
         <h2>Ready for Your Adventure?</h2>
         <p>Book your camper today and start planning your Red River Gorge getaway.</p>
-        <a href="https://rvshare.com/rvs/details/1743822" target="_blank" class="cta-btn">Book on RVShare →</a>
-        <div style="margin-top: 2rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 1.25rem 1.75rem; max-width: 480px; margin-left: auto; margin-right: auto;">
+        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 1.25rem 1.75rem; max-width: 480px; margin: 0 auto 3rem;">
             <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem;">💰 Skip the platform, save big.</p>
             <p style="font-size: 0.9rem; opacity: 0.85; margin-bottom: 0.75rem;">Book directly with us and save <strong>30%+</strong> — same camper, no platform fees.</p>
             <a href="mailto:booking@red-river-campers.com" style="display: inline-block; background: white; color: var(--primary); font-weight: 600; font-size: 0.9rem; padding: 0.6rem 1.4rem; border-radius: 6px; text-decoration: none; transition: opacity 0.2s;">Email Us to Book Direct →</a>
             <p style="margin-top: 0.85rem; font-size: 0.88rem; opacity: 0.75;">or call <a href="tel:+12602059145" style="color: white; text-decoration: underline;">(260) 205-9145</a></p>
+        </div>
+        <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 1rem;">View our Fleet on the platforms</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://rvshare.com/rvs/details/1743822" target="_blank" style="display: inline-block; background: var(--accent); color: white; padding: 0.65rem 1.4rem; border-radius: 8px; border: 2px solid #b45309; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s;" onmouseover="this.style.background='#b45309'" onmouseout="this.style.background='var(--accent)'">View on RVShare</a>
+            <a href="#" target="_blank" style="display: inline-block; background: var(--accent); color: white; padding: 0.65rem 1.4rem; border-radius: 8px; border: 2px solid #b45309; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s;" onmouseover="this.style.background='#b45309'" onmouseout="this.style.background='var(--accent)'">View on Outdoorsy</a>
+            <a href="#" target="_blank" style="display: inline-block; background: var(--accent); color: white; padding: 0.65rem 1.4rem; border-radius: 8px; border: 2px solid #b45309; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s;" onmouseover="this.style.background='#b45309'" onmouseout="this.style.background='var(--accent)'">View on GoodSam</a>
         </div>
     </section>
 
@@ -641,7 +653,7 @@
             <a href="mailto:booking@red-river-campers.com">booking@red-river-campers.com</a>
             <a href="tel:+12602059145">(260) 205-9145</a>
         </div>
-        <p>© 2026 Red River Camper Co. | Slade, Kentucky</p>
+        <p>© 2026 Red River Camper Co. | Stanton, Kentucky</p>
     </footer>
 </body>
 </html>

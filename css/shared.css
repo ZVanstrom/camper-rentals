@@ -33,7 +33,7 @@ nav {
 .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.875rem; letter-spacing: 0.01em; transition: color 0.15s; }
 .nav-links a:hover { color: var(--accent); }
-.nav-cta { background: var(--accent); color: white !important; padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 600; transition: background 0.2s !important; }
+.nav-cta { background: var(--accent); color: white !important; padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 600; transition: background 0.2s !important; border: 2px solid #b45309; }
 .nav-cta:hover { background: #b45309 !important; color: white !important; }
 
 /* Dropdown */
@@ -125,7 +125,7 @@ section { padding: 4rem 2rem; }
 .description-content { max-width: 900px; margin: 0 auto; }
 .description-content h2 { font-family: 'Playfair Display', serif; font-size: 2.25rem; color: var(--primary); margin-bottom: 1.5rem; }
 .description-content h3 { font-size: 1.5rem; color: var(--dark); margin: 2rem 0 1rem; }
-.description-content p { color: var(--gray); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+.description-content p { color: #0f2218; font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
 .description-content ul { margin: 1rem 0 1.5rem 1.5rem; }
 .description-content li { color: var(--dark); font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.5rem; }
 .highlight-box { background: var(--light); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 2rem 0; border-radius: 8px; }
