@@ -270,6 +270,11 @@ section { padding: 4rem 2rem; }
 .qw-toggle-btn { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1rem; background: white; border: 1.5px solid #e2e8f0; border-radius: 8px; cursor: pointer; color: var(--gray); transition: all 0.2s; }
 .qw-toggle-btn:hover { border-color: var(--accent); color: var(--dark); }
 .qw-toggle-btn.active { background: var(--accent); border-color: #b45309; color: white; }
+.qw-map { margin-top: 0.75rem; height: 180px; border-radius: 8px; overflow: hidden; border: 1.5px solid #e2e8f0; }
+.qw-addons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.qw-addon-btn { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 0.65rem 1rem; background: white; border: 1.5px solid #e2e8f0; border-radius: 8px; cursor: pointer; color: var(--gray); transition: all 0.2s; }
+.qw-addon-btn:hover { border-color: var(--accent); color: var(--dark); }
+.qw-addon-btn.active { background: var(--accent); border-color: #b45309; color: white; }
 .qw-quote { background: var(--light); border-radius: 10px; padding: 1.25rem 1.4rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); min-height: 100px; display: flex; align-items: center; }
 .qw-line-items { display: flex; flex-direction: column; gap: 0.55rem; width: 100%; }
 .qw-line-items:empty { display: none; }
