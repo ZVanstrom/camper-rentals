@@ -280,9 +280,9 @@ class QuoteWidget {
         if (!nights) return null;
         const { weeknightRate, weekendRate, towInsurancePerDay = 0 } = this.config.camper;
         const minimumApplied = nights.total < 3;
-        const nightsSubtotalFull = minimumApplied
-            ? 3 * weeknightRate
-            : nights.week * weeknightRate + nights.weekend * weekendRate;
+        const minimumNightsAdded = minimumApplied ? 3 - nights.total : 0;
+        const actualNightsCost = nights.week * weeknightRate + nights.weekend * weekendRate;
+        const nightsSubtotalFull = actualNightsCost + minimumNightsAdded * weekendRate;
         let discountRate = 0, discountLabel = null;
         if (nights.total >= 14)      { discountRate = 0.15; discountLabel = '15% extended stay discount'; }
         else if (nights.total === 7) { discountRate = 0.10; discountLabel = '10% weekly discount'; }
@@ -291,7 +291,7 @@ class QuoteWidget {
         let deliverySubtotal = 0, deliveryDetail = null;
         let towInsuranceSubtotal = 0;
         if (this.state.mode === 'delivery') {
-            if (this.state.miles == null) return { nights, nightsSubtotalFull, nightsSubtotal, minimumApplied, discountRate, discountLabel, discountAmount, awaitingDelivery: true };
+            if (this.state.miles == null) return { nights, nightsSubtotalFull, nightsSubtotal, minimumApplied, minimumNightsAdded, discountRate, discountLabel, discountAmount, awaitingDelivery: true };
             const raw = this.state.miles * this.config.delivery.ratePerMile;
             const min = this.config.delivery.minimum;
             deliverySubtotal = Math.round(Math.max(raw, min));
@@ -304,7 +304,7 @@ class QuoteWidget {
         const subtotal = Math.round(nightsSubtotal + deliverySubtotal + towInsuranceSubtotal + addonsSubtotal);
         const tax = Math.round(subtotal * 0.06);
         const total = Math.round(subtotal + tax);
-        return { nights, nightsSubtotalFull, nightsSubtotal, minimumApplied, discountRate, discountLabel, discountAmount, deliverySubtotal, deliveryDetail, towInsuranceSubtotal, addonLines, addonsSubtotal, subtotal, tax, total };
+        return { nights, nightsSubtotalFull, nightsSubtotal, minimumApplied, minimumNightsAdded, discountRate, discountLabel, discountAmount, deliverySubtotal, deliveryDetail, towInsuranceSubtotal, addonLines, addonsSubtotal, subtotal, tax, total };
     }
 
     update() {
@@ -335,11 +335,10 @@ class QuoteWidget {
         prompt.style.display = 'none';
         const { weeknightRate, weekendRate } = this.config.camper;
         const lines = [];
+        if (totals.nights.week > 0)    lines.push(`<div class="qw-line"><span>${totals.nights.week} weeknight${totals.nights.week !== 1 ? 's' : ''} × $${weeknightRate}</span><span>$${(totals.nights.week * weeknightRate).toLocaleString()}</span></div>`);
+        if (totals.nights.weekend > 0) lines.push(`<div class="qw-line"><span>${totals.nights.weekend} weekend night${totals.nights.weekend !== 1 ? 's' : ''} × $${weekendRate}</span><span>$${(totals.nights.weekend * weekendRate).toLocaleString()}</span></div>`);
         if (totals.minimumApplied) {
-            lines.push(`<div class="qw-line"><span>3-night minimum <small>(3 × $${weeknightRate})</small></span><span>$${totals.nightsSubtotalFull.toLocaleString()}</span></div>`);
-        } else {
-            if (totals.nights.week > 0)    lines.push(`<div class="qw-line"><span>${totals.nights.week} weeknight${totals.nights.week !== 1 ? 's' : ''} × $${weeknightRate}</span><span>$${(totals.nights.week * weeknightRate).toLocaleString()}</span></div>`);
-            if (totals.nights.weekend > 0) lines.push(`<div class="qw-line"><span>${totals.nights.weekend} weekend night${totals.nights.weekend !== 1 ? 's' : ''} × $${weekendRate}</span><span>$${(totals.nights.weekend * weekendRate).toLocaleString()}</span></div>`);
+            lines.push(`<div class="qw-line"><span>+${totals.minimumNightsAdded} weekend night${totals.minimumNightsAdded !== 1 ? 's' : ''} <small>(3-night minimum × $${weekendRate})</small></span><span>$${(totals.minimumNightsAdded * weekendRate).toLocaleString()}</span></div>`);
         }
         if (totals.discountAmount > 0) lines.push(`<div class="qw-line qw-discount"><span>${totals.discountLabel}</span><span>-$${totals.discountAmount.toLocaleString()}</span></div>`);
         if (this.state.mode === 'delivery') {
