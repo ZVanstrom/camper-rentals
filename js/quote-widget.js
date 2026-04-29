@@ -74,8 +74,8 @@ class QuoteWidget {
                         <label class="qw-label">Delivery Address</label>
                         <input type="text" class="qw-input qw-address" placeholder="Start typing an address...">
                         <div class="qw-helper qw-distance"></div>
-                        <div class="qw-map" hidden></div>
                     </div>
+                    <div class="qw-map" hidden></div>
                     ${addonsHtml}
                 </div>
                 <div class="qw-quote">
@@ -83,7 +83,7 @@ class QuoteWidget {
                     <p class="qw-prompt">Select your dates to see a quote.</p>
                 </div>
                 <div class="qw-customer" hidden>
-                    <h3>Want this quote in your inbox?</h3>
+                    <h3>Save your quote and get in touch!</h3>
                     <p class="qw-customer-sub">Drop your email and we'll send the full breakdown — and follow up to lock in your dates.</p>
                     <div class="qw-customer-fields">
                         <input type="email" class="qw-input qw-email" placeholder="Email (required)" required>
@@ -104,7 +104,12 @@ class QuoteWidget {
                 btn.classList.add('active');
                 this.state.mode = btn.dataset.mode;
                 this.$('.qw-address-field').hidden = this.state.mode !== 'delivery';
-                if (this.state.mode === 'pickup') { this.state.miles = null; this.state.address = null; this.$('.qw-distance').textContent = ''; this.$('.qw-map').hidden = true; }
+                if (this.state.mode === 'pickup') {
+                    this.state.miles = null; this.state.address = null; this.$('.qw-distance').textContent = '';
+                    this.showPickupMap();
+                } else {
+                    this.$('.qw-map').hidden = true;
+                }
                 this.update();
             });
         });
@@ -183,6 +188,32 @@ class QuoteWidget {
             this.showRouteMap(this.config.delivery.origin, address);
             this.update();
         });
+    }
+
+    showPickupMap() {
+        if (!window.google?.maps) return;
+        const mapEl = this.$('.qw-map');
+        mapEl.hidden = false;
+        if (this._pickupLatLng) {
+            this._renderPickupMap(mapEl, this._pickupLatLng);
+            return;
+        }
+        new google.maps.Geocoder().geocode({ address: 'Red River Paylake, Slade, KY 40376' }, (results, status) => {
+            if (status !== 'OK' || !results[0]) return;
+            this._pickupLatLng = results[0].geometry.location;
+            this._renderPickupMap(mapEl, this._pickupLatLng);
+        });
+    }
+
+    _renderPickupMap(mapEl, location) {
+        const map = new google.maps.Map(mapEl, {
+            center: location,
+            zoom: 9,
+            disableDefaultUI: true,
+            zoomControl: true,
+            gestureHandling: 'cooperative',
+        });
+        new google.maps.Marker({ map, position: location });
     }
 
     showRouteMap(origin, destination) {
