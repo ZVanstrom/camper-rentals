@@ -86,14 +86,9 @@
         </div>
     </section>
 
-    <!-- ── AVAILABILITY PICKER ── -->
-    <section style="padding: 3rem 2rem; background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%); text-align: center;">
-        <p style="color: rgba(255,255,255,0.75); font-size: 1.05rem; margin-bottom: 1.5rem;">Select your dates to check availability</p>
-        <div style="display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 1.5rem 2rem;">
-            <label for="dateRange" style="display: block; color: rgba(255,255,255,0.7); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.6rem;">Pick-up → Drop-off</label>
-            <input id="dateRange" placeholder="Select date range" readonly style="background: white; border: none; border-radius: 8px; padding: 0.85rem 1.25rem; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--dark); width: 280px; cursor: pointer; text-align: center;">
-            <div id="nightCount" style="color: rgba(255,255,255,0.65); font-size: 0.9rem; margin-top: 0.75rem; min-height: 1.2em;"></div>
-        </div>
+    <!-- ── QUOTE WIDGET ── -->
+    <section class="quote-widget-section">
+        <div id="quote-widget"></div>
     </section>
 
     <section class="description-section">
@@ -215,21 +210,15 @@
 
     <script src="js/carousel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBfbiTv37Tqd0AqFt4WPsSrSq5dbpa7IY&libraries=places&loading=async" async defer></script>
+    <script src="js/quote-widget.js"></script>
     <script>
-        flatpickr("#dateRange", {
-            mode: "range",
-            minDate: "today",
-            dateFormat: "M j, Y",
-            showMonths: 2,
-            onChange: function(selectedDates) {
-                const el = document.getElementById("nightCount");
-                if (selectedDates.length === 2) {
-                    const nights = Math.round((selectedDates[1] - selectedDates[0]) / 86400000);
-                    el.textContent = nights + " night" + (nights !== 1 ? "s" : "");
-                } else {
-                    el.textContent = "";
-                }
-            }
+        new QuoteWidget({
+            container: '#quote-widget',
+            camper:   { name: '2025 Salem 32BHDS', weeknightRate: 130, weekendRate: 150, towInsurancePerDay: 20 },
+            delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
+            emailjs:  { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_quote' }
         });
     </script>
 </body>
