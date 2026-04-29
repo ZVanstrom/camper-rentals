@@ -121,7 +121,57 @@ section { padding: 4rem 2rem; }
 .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.9rem; }
 
 /* ── DESCRIPTION ── */
-.description-section { background: white; }
+.description-section { background: #b2c4b0; padding-top: 1.5rem; }
+
+/* ── FEATURE CARDS ── */
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin: 0.5rem 0 2rem;
+}
+.feature-card {
+    background: var(--light);
+    border-radius: 8px;
+    padding: 0.15rem 0.9rem 0.25rem 0.45rem;
+    border-left: 4px solid var(--accent);
+}
+.feature-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0.2rem 0 0.5rem;
+    text-align: center;
+}
+.feature-card ul { list-style: none; margin: 0 0 0 -15px; padding: 0; }
+.feature-card li {
+    font-size: 1rem;
+    color: var(--dark);
+    padding: 0.28rem 0 0.28rem 1.5rem;
+    position: relative;
+    border-bottom: 1px solid #f1f5f9;
+}
+.feature-card li:last-child { border-bottom: none; }
+.feature-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    top: 0.5rem;
+}
+
+/* ── TECH DETAILS WRAPPER ── */
+.tech-details-wrapper {
+    margin: 3rem 0 1rem;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    background: var(--light);
+    overflow: hidden;
+}
+.tech-details-wrapper .spec-card { border: 1px solid #94a3b8; }
 .description-content { max-width: 900px; margin: 0 auto; }
 .description-content h2 { font-family: 'Playfair Display', serif; font-size: 2.25rem; color: var(--primary); margin-bottom: 1.5rem; }
 .description-content h3 { font-size: 1.5rem; color: var(--dark); margin: 2rem 0 1rem; }
