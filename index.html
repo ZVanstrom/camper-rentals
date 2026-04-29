@@ -97,12 +97,14 @@
 
         .section-subtitle {
             text-align: center;
-            color: var(--gray);
+            color: #0f2218;
             max-width: 600px;
             margin: 0 auto 3rem;
         }
 
         /* Campers Grid */
+        #campers { background: #b2c4b0; }
+
         .campers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -171,17 +173,20 @@
         }
 
         .spec-tag {
-            background: var(--light);
+            background: #d0ddd3;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            color: var(--gray);
+            color: #3a5c45;
         }
 
         .camper-info p {
             color: var(--gray);
             font-size: 0.95rem;
             margin-bottom: 1rem;
+        }
+
+        .camper-info p:not(.year) {
             flex: 1;
         }
 
@@ -576,27 +581,35 @@
 
         <div class="faq-list">
             <div class="faq-item">
-                <h3>Do I need my own truck to tow?</h3>
-                <p>No truck needed! We offer full delivery and setup service. A popular option is setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent);">Daniel Boone Coffee House RV Parking</a> in Slade — convenient, central, and right in the heart of the Gorge. We also deliver to any campground of your choosing at $5 per mile with a minimum charge of $100, which includes full setup at your destination.</p>
+                <h3>Delivery?</h3>
+                <p>No truck needed! We offer full delivery and setup service. We'll take care of drop-off, leveling, water/propane fill, slide-outs, black-tank dump, and pick-up in your delivery cost. We deliver to a location of your choosing at $2.50 per mile (round-trip) with a minimum charge of $100.</p>
             </div>
             <div class="faq-item">
-                <h3>Where can I take the camper?</h3>
-                <p>Long story short, we're flexible. We'll deliver up to 100 miles no problem and we have no issue with you taking our campers around the region. At the end of the day, we're a small family business and we'll do what we can to accommodate your vacation. Tell us about your plans and we'll tell you what we can do. No hidden fees and no wasting your time: our goal is to make it happen or direct you to someone who can.</p>
+                <h3>Can I pickup the camper?</h3>
+                <p>Our team is experienced at hauling and we prefer delivery to reduce risk for everyone involved. However, we're flexible. Experienced haulers (looking at you, off-roaders!) will sign an additional towing addendum and pay a $20 additional daily-fee to cover our insurance requirements and can pickup the camper from a pre-arranged location, usually in Stanton, KY. </p>
             </div>
             <div class="faq-item">
                 <h3>What's included with the rental?</h3>
                 <div style="column-count: 2; column-gap: 2rem; margin-top: 0.75rem;">
                     <ul style="list-style: disc; padding-left: 1.25rem; color: var(--gray); line-height: 2; break-inside: avoid;">
                         <li>Basic kitchen supplies</li>
-                        <li>Bedding &amp; pillows</li>
-                        <li>Outdoor chairs</li>
-                        <li>Full propane tank</li>
+                        <li>Bedding &amp; pillows <span style="font-size: 0.85rem; color: #999; font-weight: 400;">(for all sleeping areas)</span></li>
+                        <li>Outdoor chairs, sidetable, rug</li>
+                        <li>Full propane and water tanks</li>
                         <li>Toilet paper</li>
-                        <li>Generator &amp; gas can <span style="font-size: 0.85rem; color: #999; font-weight: 400;">(can be pre-filled at cost)</span></li>
+                        <li>Keurig <span style="font-size: 0.85rem; color: #999; font-weight: 400;">(w/ K-cups)</span></li>
                         <li>First aid kit</li>
                     </ul>
                 </div>
                 <p style="margin-top: 1rem;">Just bring your clothes, food, and sense of adventure!</p>
+            </div>
+            <div class="faq-item">
+                <h3>What add-ons are available?</h3>
+                <ul style="list-style: disc; padding-left: 1.25rem; color: var(--gray); line-height: 2; margin-top: 0.75rem;">
+                    <li>Generator — $10/day <span style="font-size: 0.85rem; color: #999; font-weight: 400;">(comes with pre-filled gas can)</span></li>
+                    <li>Starlink — $60/rental</li>
+                    <li>Espresso Machine: <a href="https://www.breville.com/en-us/product/bes870xl" target="_blank" rel="noopener" style="color: var(--accent);">Breville Barista Express</a> — $10/day <span style="font-size: 0.85rem; color: #999; font-weight: 400;">(fresh beans included)</span></li>
+                </ul>
             </div>
             <div class="faq-item">
                 <h3>What is your cancellation policy?</h3>
@@ -604,7 +617,7 @@
             </div>
             <div class="faq-item">
                 <h3>Is there a security deposit?</h3>
-                <p>Yes, we require a $200 refundable security deposit. The deposit is returned after the camper is inspected following your rental. If you cancel more than 14 days prior to your rental start date, the deposit will also be fully refunded.</p>
+                <p>Yes, we require a $250 refundable security deposit. The deposit is returned after the camper is inspected following your rental. If you cancel more than 7 days prior to your rental start date, the deposit will also be fully refunded. Security deposit will be waived if invoice is paid in full >14 days before trip.</p>
             </div>
         </div>
     </section>
