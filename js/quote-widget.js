@@ -54,8 +54,8 @@ class QuoteWidget {
         this.container.innerHTML = `
             <div class="qw">
                 <div class="qw-header">
-                    <h2>Get an Instant Quote</h2>
-                    <p>Pick your dates and choose pickup or delivery — your total updates instantly.</p>
+                    <h2>Instant Quote Tool</h2>
+                    <p>${this.config.camper.name}</p>
                 </div>
                 <div class="qw-form">
                     <div class="qw-field">
@@ -67,7 +67,7 @@ class QuoteWidget {
                         <label class="qw-label">Pickup or Delivery</label>
                         <div class="qw-toggle">
                             <button type="button" class="qw-toggle-btn active" data-mode="delivery">🚗 Delivery</button>
-                            <button type="button" class="qw-toggle-btn" data-mode="pickup">📍 Pickup in Slade</button>
+                            <button type="button" class="qw-toggle-btn" data-mode="pickup">📍 Pickup in Stanton</button>
                         </div>
                     </div>
                     <div class="qw-field qw-address-field">
@@ -326,7 +326,7 @@ class QuoteWidget {
                 : `${dd.miles.toFixed(0)} mi × $${this.config.delivery.ratePerMile}/mi`;
             lines.push(`<div class="qw-line"><span>Delivery <small>(${detail})</small></span><span>$${Math.round(totals.deliverySubtotal).toLocaleString()}</span></div>`);
         } else {
-            lines.push(`<div class="qw-line"><span>Pickup in Slade</span><span class="qw-free">Free</span></div>`);
+            lines.push(`<div class="qw-line"><span>Pickup in Stanton</span><span class="qw-free">Free</span></div>`);
             const towRate = this.config.camper.towInsurancePerDay || 0;
             if (towRate > 0) {
                 lines.push(`<div class="qw-line"><span>Towing insurance <small>(${totals.nights.total} day${totals.nights.total !== 1 ? 's' : ''} × $${towRate})</small></span><span>$${totals.towInsuranceSubtotal.toLocaleString()}</span></div>`);
@@ -374,7 +374,7 @@ class QuoteWidget {
             nights_subtotal: `$${totals.nightsSubtotal.toLocaleString()}`,
             delivery_mode:   this.state.mode === 'delivery'
                 ? `Delivery to ${this.state.address} (${totals.deliveryDetail.miles.toFixed(0)} mi)`
-                : 'Pickup in Slade',
+                : 'Pickup in Stanton',
             delivery_subtotal: this.state.mode === 'delivery' ? `$${Math.round(totals.deliverySubtotal).toLocaleString()}` : 'Free',
             tow_insurance_subtotal: this.state.mode === 'delivery' ? 'N/A' : `$${totals.towInsuranceSubtotal.toLocaleString()}`,
             addons_label:    addonsLabel,

@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         html { scroll-behavior: smooth; }
 
@@ -220,6 +221,16 @@
             background: #b45309;
             transform: translateY(-2px);
             box-shadow: 0 5px 16px rgba(217,119,6,0.4);
+        }
+
+        /* Instant Quote section */
+        #instant-quote {
+            background: #f1f5f9;
+        }
+
+        #iq-widget-wrap {
+            max-width: 780px;
+            margin: 0 auto;
         }
 
         /* About */
@@ -467,7 +478,7 @@
             </li>
             <li><a href="#location">Location</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#book" class="nav-cta">Book Now</a></li>
+            <li><a href="#instant-quote" class="nav-cta">Book Now</a></li>
         </ul>
     </nav>
 
@@ -482,10 +493,44 @@
         </div>
     </section>
 
+    <!-- Instant Quote -->
+    <section id="instant-quote">
+        <h2 class="section-title">Get an Instant Quote</h2>
+        <p class="section-subtitle">Choose a camper to get started or keep scrolling to learn more about our fleet.</p>
+
+        <div class="iq-picker">
+            <div class="iq-card" data-camper="26dbud" data-name="2025 Salem 26DBUD">
+                <img src="camper_photos/26DBUD_photos/1_exterior.jpg" alt="Salem 26DBUD">
+                <div class="iq-card-info">
+                    <div class="iq-card-name">Salem 26DBUD</div>
+                    <div class="iq-card-price">From $130/night</div>
+                </div>
+            </div>
+            <div class="iq-card" data-camper="32bhds" data-name="2025 Salem 32BHDS">
+                <img src="camper_photos/32BHDS_photos/1_exterior.jpg" alt="Salem 32BHDS">
+                <div class="iq-card-info">
+                    <div class="iq-card-name">Salem 32BHDS</div>
+                    <div class="iq-card-price">From $130/night</div>
+                </div>
+            </div>
+            <div class="iq-card" data-camper="26rr" data-name="2021 Grey Wolf Cherokee 26RR">
+                <img src="camper_photos/26RR_Photos/IMG_9628.jpg" alt="Grey Wolf 26RR">
+                <div class="iq-card-info">
+                    <div class="iq-card-name">Grey Wolf 26RR</div>
+                    <div class="iq-card-price">From $100/night</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="iq-widget-wrap" hidden>
+            <div id="iq-widget"></div>
+        </div>
+    </section>
+
     <!-- Campers -->
     <section id="campers">
         <h2 class="section-title">Our Campers</h2>
-        <p class="section-subtitle">Three quality campers ready for your Red River Gorge adventure. Each unit is well-maintained and fully equipped.</p>
+        <p class="section-subtitle">Three quality campers ready for your adventure. Each unit is well-maintained and fully equipped, and they'll be delivered in a Timely and Tidy manner.</p>
 
         <div class="campers-grid">
             <!-- Camper 1 -->
@@ -578,7 +623,7 @@
                     <li>Miguel's Pizza (a local legend)</li>
                     <li>Nada Tunnel & scenic drives</li>
                 </ul>
-                <p style="margin-top: 1.2rem;"><strong>🏕️ Setup Service Available:</strong> We offer full camper setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Slade — just steps from great coffee, trails, and everything the Gorge has to offer. Ask us about delivery & setup pricing!</p>
+                <p style="margin-top: 1.2rem;"><strong>🏕️ Setup Service Available:</strong> We offer full camper setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Stanton — just steps from great coffee, trails, and everything the Gorge has to offer. Ask us about delivery & setup pricing!</p>
             </div>
             <div class="location-map">
                 <iframe src="https://maps.google.com/maps?q=37.7903,-83.7025&z=11&t=k&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -653,6 +698,67 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBfbiTv37Tqd0AqFt4WPsSrSq5dbpa7IY&libraries=places&loading=async" async defer></script>
+    <script src="js/quote-widget.js"></script>
+    <script>
+        const IQ_CONFIGS = {
+            '26dbud': {
+                camper:   { name: '2025 Salem 26DBUD', weeknightRate: 130, weekendRate: 150, towInsurancePerDay: 20 },
+                delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
+                addons: [
+                    { id: 'starlink',  label: 'Starlink',        price: 60, per: 'rental' },
+                    { id: 'generator', label: 'Generator',        price: 10, per: 'night'  },
+                    { id: 'espresso',  label: 'Espresso machine', price: 10, per: 'night'  },
+                ],
+                emailjs: { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_rl4wku4' }
+            },
+            '32bhds': {
+                camper:   { name: '2025 Salem 32BHDS', weeknightRate: 130, weekendRate: 150, towInsurancePerDay: 20 },
+                delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
+                addons: [
+                    { id: 'starlink',  label: 'Starlink',        price: 60, per: 'rental' },
+                    { id: 'generator', label: 'Generator',        price: 10, per: 'night'  },
+                    { id: 'espresso',  label: 'Espresso machine', price: 10, per: 'night'  },
+                ],
+                emailjs: { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_rl4wku4' }
+            },
+            '26rr': {
+                camper:   { name: '2021 Grey Wolf Cherokee 26RR', weeknightRate: 100, weekendRate: 120, towInsurancePerDay: 20 },
+                delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
+                addons: [
+                    { id: 'starlink',  label: 'Starlink',        price: 60, per: 'rental' },
+                    { id: 'generator', label: 'Generator',        price: 10, per: 'night'  },
+                    { id: 'espresso',  label: 'Espresso machine', price: 10, per: 'night'  },
+                ],
+                emailjs: { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_rl4wku4' }
+            },
+        };
+
+        let iqWidget = null;
+
+        function selectCamper(card, scroll) {
+            const key = card.dataset.camper;
+            document.querySelectorAll('.iq-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+
+            const wrap = document.getElementById('iq-widget-wrap');
+            const widgetEl = document.getElementById('iq-widget');
+            widgetEl.innerHTML = '';
+            wrap.hidden = false;
+            if (scroll) wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            iqWidget = new QuoteWidget({ container: '#iq-widget', ...IQ_CONFIGS[key] });
+        }
+
+        document.querySelectorAll('.iq-card').forEach(card => {
+            card.addEventListener('click', () => selectCamper(card, true));
+        });
+
+        selectCamper(document.querySelector('.iq-card[data-camper="32bhds"]'), false);
+    </script>
 
     <!-- Footer -->
     <footer>

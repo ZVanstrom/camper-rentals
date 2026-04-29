@@ -88,7 +88,32 @@
 
     <!-- ── QUOTE WIDGET ── -->
     <section class="quote-widget-section">
-        <div id="quote-widget"></div>
+        <div class="iq-picker">
+            <div class="iq-card" data-camper="26dbud" data-name="2025 Salem 26DBUD">
+                <img src="camper_photos/26DBUD_photos/1_exterior.jpg" alt="Salem 26DBUD">
+                <div class="iq-card-info">
+                    <div class="iq-card-name">Salem 26DBUD</div>
+                    <div class="iq-card-price">From $130/night</div>
+                </div>
+            </div>
+            <div class="iq-card" data-camper="32bhds" data-name="2025 Salem 32BHDS">
+                <img src="camper_photos/32BHDS_photos/1_exterior.jpg" alt="Salem 32BHDS">
+                <div class="iq-card-info">
+                    <div class="iq-card-name">Salem 32BHDS</div>
+                    <div class="iq-card-price">From $130/night</div>
+                </div>
+            </div>
+            <div class="iq-card" data-camper="26rr" data-name="2021 Grey Wolf Cherokee 26RR">
+                <img src="camper_photos/26RR_Photos/IMG_9628.jpg" alt="Grey Wolf 26RR">
+                <div class="iq-card-info">
+                    <div class="iq-card-name">Grey Wolf 26RR</div>
+                    <div class="iq-card-price">From $100/night</div>
+                </div>
+            </div>
+        </div>
+        <div id="iq-widget-wrap" style="max-width:780px;margin:0 auto;">
+            <div id="iq-widget"></div>
+        </div>
     </section>
 
     <section class="description-section">
@@ -154,9 +179,9 @@
                 </div>
 
                 <div class="highlight-box">
-                    <p><strong>📍 Pickup:</strong> Slade, KY (Gateway to Red River Gorge)</p>
+                    <p><strong>📍 Pickup:</strong> Stanton, KY (Gateway to Red River Gorge)</p>
                     <p><strong>🚗 Delivery:</strong> Available up to 100 miles at $5/mile with a minimum $100, includes setup</p>
-                    <p><strong>🏕️ Setup Available:</strong> We offer full delivery &amp; setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Slade, or at a campground of your choice!</p>
+                    <p><strong>🏕️ Setup Available:</strong> We offer full delivery &amp; setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Stanton, or at a campground of your choice!</p>
                     <p><strong>🎯 Best For:</strong> Large families, multi-family trips, extended stays, or anyone who refuses to compromise on comfort</p>
                 </div>
 
@@ -214,17 +239,58 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBfbiTv37Tqd0AqFt4WPsSrSq5dbpa7IY&libraries=places&loading=async" async defer></script>
     <script src="js/quote-widget.js"></script>
     <script>
-        new QuoteWidget({
-            container: '#quote-widget',
-            camper:   { name: '2025 Salem 32BHDS', weeknightRate: 130, weekendRate: 150, towInsurancePerDay: 20 },
-            delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
-            addons:   [
-                { id: 'starlink',  label: 'Starlink',          price: 60, per: 'rental' },
-                { id: 'generator', label: 'Generator',          price: 10, per: 'night'  },
-                { id: 'espresso',  label: 'Espresso machine',   price: 10, per: 'night'  },
-            ],
-            emailjs:  { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_rl4wku4' }
+        const IQ_CONFIGS = {
+            '26dbud': {
+                camper:   { name: '2025 Salem 26DBUD', weeknightRate: 130, weekendRate: 150, towInsurancePerDay: 20 },
+                delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
+                addons: [
+                    { id: 'starlink',  label: 'Starlink',        price: 60, per: 'rental' },
+                    { id: 'generator', label: 'Generator',        price: 10, per: 'night'  },
+                    { id: 'espresso',  label: 'Espresso machine', price: 10, per: 'night'  },
+                ],
+                emailjs: { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_rl4wku4' }
+            },
+            '32bhds': {
+                camper:   { name: '2025 Salem 32BHDS', weeknightRate: 130, weekendRate: 150, towInsurancePerDay: 20 },
+                delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
+                addons: [
+                    { id: 'starlink',  label: 'Starlink',        price: 60, per: 'rental' },
+                    { id: 'generator', label: 'Generator',        price: 10, per: 'night'  },
+                    { id: 'espresso',  label: 'Espresso machine', price: 10, per: 'night'  },
+                ],
+                emailjs: { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_rl4wku4' }
+            },
+            '26rr': {
+                camper:   { name: '2021 Grey Wolf Cherokee 26RR', weeknightRate: 100, weekendRate: 120, towInsurancePerDay: 20 },
+                delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
+                addons: [
+                    { id: 'starlink',  label: 'Starlink',        price: 60, per: 'rental' },
+                    { id: 'generator', label: 'Generator',        price: 10, per: 'night'  },
+                    { id: 'espresso',  label: 'Espresso machine', price: 10, per: 'night'  },
+                ],
+                emailjs: { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_rl4wku4' }
+            },
+        };
+
+        let iqWidget = null;
+
+        function selectCamper(card, scroll) {
+            const key = card.dataset.camper;
+            document.querySelectorAll('.iq-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            const wrap = document.getElementById('iq-widget-wrap');
+            const widgetEl = document.getElementById('iq-widget');
+            widgetEl.innerHTML = '';
+            wrap.hidden = false;
+            if (scroll) wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            iqWidget = new QuoteWidget({ container: '#iq-widget', ...IQ_CONFIGS[key] });
+        }
+
+        document.querySelectorAll('.iq-card').forEach(card => {
+            card.addEventListener('click', () => selectCamper(card, true));
         });
+
+        selectCamper(document.querySelector('.iq-card[data-camper="32bhds"]'), false);
     </script>
 </body>
 </html>
