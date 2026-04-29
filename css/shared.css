@@ -277,6 +277,8 @@ section { padding: 4rem 2rem; }
 .qw-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.98rem; color: var(--dark); }
 .qw-line small { color: var(--gray); font-size: 0.82rem; }
 .qw-free { color: #16a34a; font-weight: 600; }
+.qw-discount { color: #16a34a; font-weight: 600; }
+.qw-line.qw-subtotal { padding-top: 0.7rem; margin-top: 0.4rem; border-top: 1.5px dashed #cbd5e1; font-weight: 600; color: var(--dark); }
 .qw-line.qw-total { padding-top: 0.7rem; margin-top: 0.4rem; border-top: 1.5px dashed #cbd5e1; font-size: 1.25rem; font-weight: 700; color: var(--primary); }
 .qw-customer { border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
 .qw-customer h3 { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }

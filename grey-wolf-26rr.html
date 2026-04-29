@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         .badge { background: #dc2626; }
         .description-section { padding-top: 1.5rem; }
@@ -88,6 +89,11 @@
             </div>
             <div class="carousel-counter" id="carouselCounter">1 / 14</div>
         </div>
+    </section>
+
+    <!-- ── QUOTE WIDGET ── -->
+    <section class="quote-widget-section">
+        <div id="quote-widget"></div>
     </section>
 
     <section class="description-section">
@@ -203,5 +209,17 @@
     </footer>
 
     <script src="js/carousel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBfbiTv37Tqd0AqFt4WPsSrSq5dbpa7IY&libraries=places&loading=async" async defer></script>
+    <script src="js/quote-widget.js"></script>
+    <script>
+        new QuoteWidget({
+            container: '#quote-widget',
+            camper:   { name: '2021 Grey Wolf Cherokee 26RR', weeknightRate: 100, weekendRate: 120, towInsurancePerDay: 20 },
+            delivery: { ratePerMile: 5, minimum: 100, origin: 'Stanton, KY 40380' },
+            emailjs:  { publicKey: 'z8OLy4eEgxpeaK5Jp', serviceId: 'service_jsho87g', templateId: 'template_rl4wku4' }
+        });
+    </script>
 </body>
 </html>

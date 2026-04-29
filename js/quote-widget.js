@@ -122,15 +122,16 @@ class QuoteWidget {
     initGoogleMaps() {
         const input = this.$('.qw-address');
         this.autocomplete = new google.maps.places.Autocomplete(input, {
-            types: ['geocode'],
             componentRestrictions: { country: 'us' },
-            fields: ['formatted_address', 'geometry']
+            fields: ['formatted_address', 'name', 'geometry']
         });
         this.distanceService = new google.maps.DistanceMatrixService();
         this.autocomplete.addListener('place_changed', () => {
             const place = this.autocomplete.getPlace();
             if (!place || !place.formatted_address) return;
-            this.state.address = place.formatted_address;
+            this.state.address = place.name && place.name !== place.formatted_address
+                ? `${place.name}, ${place.formatted_address}`
+                : place.formatted_address;
             this.lookupDistance(place.formatted_address);
         });
     }
@@ -170,19 +171,27 @@ class QuoteWidget {
         const nights = this.calculateNights();
         if (!nights) return null;
         const { weeknightRate, weekendRate, towInsurancePerDay = 0 } = this.config.camper;
-        const nightsSubtotal = nights.week * weeknightRate + nights.weekend * weekendRate;
+        const nightsSubtotalFull = nights.week * weeknightRate + nights.weekend * weekendRate;
+        let discountRate = 0, discountLabel = null;
+        if (nights.total >= 14)      { discountRate = 0.15; discountLabel = '15% extended stay discount'; }
+        else if (nights.total === 7) { discountRate = 0.10; discountLabel = '10% weekly discount'; }
+        const discountAmount = Math.round(nightsSubtotalFull * discountRate);
+        const nightsSubtotal = nightsSubtotalFull - discountAmount;
         let deliverySubtotal = 0, deliveryDetail = null;
         let towInsuranceSubtotal = 0;
         if (this.state.mode === 'delivery') {
-            if (this.state.miles == null) return { nights, nightsSubtotal, awaitingDelivery: true };
+            if (this.state.miles == null) return { nights, nightsSubtotalFull, nightsSubtotal, discountRate, discountLabel, discountAmount, awaitingDelivery: true };
             const raw = this.state.miles * this.config.delivery.ratePerMile;
             const min = this.config.delivery.minimum;
-            deliverySubtotal = Math.max(raw, min);
+            deliverySubtotal = Math.round(Math.max(raw, min));
             deliveryDetail = { miles: this.state.miles, raw, appliedMinimum: raw < min };
         } else {
             towInsuranceSubtotal = towInsurancePerDay * nights.total;
         }
-        return { nights, nightsSubtotal, deliverySubtotal, deliveryDetail, towInsuranceSubtotal, total: nightsSubtotal + deliverySubtotal + towInsuranceSubtotal };
+        const subtotal = Math.round(nightsSubtotal + deliverySubtotal + towInsuranceSubtotal);
+        const tax = Math.round(subtotal * 0.06);
+        const total = Math.round(subtotal + tax);
+        return { nights, nightsSubtotalFull, nightsSubtotal, discountRate, discountLabel, discountAmount, deliverySubtotal, deliveryDetail, towInsuranceSubtotal, subtotal, tax, total };
     }
 
     update() {
@@ -214,6 +223,7 @@ class QuoteWidget {
         const lines = [];
         if (totals.nights.week > 0)    lines.push(`<div class="qw-line"><span>${totals.nights.week} weeknight${totals.nights.week !== 1 ? 's' : ''} × $${weeknightRate}</span><span>$${(totals.nights.week * weeknightRate).toLocaleString()}</span></div>`);
         if (totals.nights.weekend > 0) lines.push(`<div class="qw-line"><span>${totals.nights.weekend} weekend night${totals.nights.weekend !== 1 ? 's' : ''} × $${weekendRate}</span><span>$${(totals.nights.weekend * weekendRate).toLocaleString()}</span></div>`);
+        if (totals.discountAmount > 0) lines.push(`<div class="qw-line qw-discount"><span>${totals.discountLabel}</span><span>−$${totals.discountAmount.toLocaleString()}</span></div>`);
         if (this.state.mode === 'delivery') {
             const dd = totals.deliveryDetail;
             const detail = dd.appliedMinimum
@@ -227,7 +237,9 @@ class QuoteWidget {
                 lines.push(`<div class="qw-line"><span>Towing insurance <small>(${totals.nights.total} day${totals.nights.total !== 1 ? 's' : ''} × $${towRate})</small></span><span>$${totals.towInsuranceSubtotal.toLocaleString()}</span></div>`);
             }
         }
-        lines.push(`<div class="qw-line qw-total"><span>Total</span><span>$${Math.round(totals.total).toLocaleString()}</span></div>`);
+        lines.push(`<div class="qw-line qw-subtotal"><span>Subtotal</span><span>$${totals.subtotal.toLocaleString()}</span></div>`);
+        lines.push(`<div class="qw-line"><span>Tax <small>(6%)</small></span><span>$${totals.tax.toLocaleString()}</span></div>`);
+        lines.push(`<div class="qw-line qw-total"><span>Total</span><span>$${totals.total.toLocaleString()}</span></div>`);
         lineItems.innerHTML = lines.join('');
         customer.hidden = false;
     }
@@ -254,6 +266,9 @@ class QuoteWidget {
             weeknights:      totals.nights.week,
             weekend_nights:  totals.nights.weekend,
             nights_subtotal: `$${totals.nightsSubtotal.toLocaleString()}`,
+            discount: totals.discountAmount > 0 ? `${totals.discountLabel} (−$${totals.discountAmount.toLocaleString()})` : 'None',
+            subtotal: `$${totals.subtotal.toLocaleString()}`,
+            tax: `$${totals.tax.toLocaleString()}`,
             delivery_mode:   this.state.mode === 'delivery'
                 ? `Delivery to ${this.state.address} (${totals.deliveryDetail.miles.toFixed(0)} mi)`
                 : 'Pickup in Slade',
