@@ -255,7 +255,7 @@ section { padding: 4rem 2rem; }
 
 /* ── QUOTE WIDGET ── */
 .quote-widget-section { background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%); padding: 4rem 2rem; }
-.qw { max-width: 720px; margin: 0 auto; background: white; border-radius: 16px; padding: 2.25rem 2.25rem 2rem; box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+.qw { max-width: 720px; margin: 0 auto; background: white; border-radius: 16px; padding: 2.25rem 2.25rem 2rem; box-shadow: 0 12px 40px rgba(0,0,0,0.2); color-scheme: light; color: var(--dark); }
 .qw-header { text-align: center; margin-bottom: 1.75rem; }
 .qw-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary); margin-bottom: 0.4rem; }
 .qw-header p { color: var(--gray); font-size: 0.95rem; }
@@ -298,8 +298,10 @@ section { padding: 4rem 2rem; }
     .qw-header h2 { font-size: 1.6rem; }
     .qw-toggle { grid-template-columns: 1fr; }
 }
-/* Google Places dropdown — sit above flatpickr / nav */
-.pac-container { z-index: 10000; font-family: 'Inter', sans-serif; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+/* Google Places dropdown — sit above flatpickr / nav, force light mode */
+.pac-container { z-index: 10000; font-family: 'Inter', sans-serif; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); color-scheme: light; background: white; color: #0f172a; }
+/* Flatpickr calendar — force light mode */
+.flatpickr-calendar { color-scheme: light; }
 
 /* ── FOOTER ── */
 footer { background: var(--dark); color: white; padding: 3rem 2rem; text-align: center; }
