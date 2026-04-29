@@ -19,7 +19,7 @@
 class QuoteWidget {
     constructor(config) {
         this.config = config;
-        this.state = { checkIn: null, checkOut: null, mode: 'pickup', address: null, miles: null };
+        this.state = { checkIn: null, checkOut: null, mode: 'delivery', address: null, miles: null };
         this.container = document.querySelector(config.container);
         if (!this.container) { console.error('QuoteWidget: container not found:', config.container); return; }
         this.render();
@@ -47,11 +47,11 @@ class QuoteWidget {
                     <div class="qw-field">
                         <label class="qw-label">Pickup or Delivery</label>
                         <div class="qw-toggle">
-                            <button type="button" class="qw-toggle-btn active" data-mode="pickup">📍 Pickup in Slade</button>
-                            <button type="button" class="qw-toggle-btn" data-mode="delivery">🚗 Delivery</button>
+                            <button type="button" class="qw-toggle-btn active" data-mode="delivery">🚗 Delivery</button>
+                            <button type="button" class="qw-toggle-btn" data-mode="pickup">📍 Pickup in Slade</button>
                         </div>
                     </div>
-                    <div class="qw-field qw-address-field" hidden>
+                    <div class="qw-field qw-address-field">
                         <label class="qw-label">Delivery Address</label>
                         <input type="text" class="qw-input qw-address" placeholder="Start typing an address...">
                         <div class="qw-helper qw-distance"></div>
@@ -241,10 +241,13 @@ class QuoteWidget {
 
         const fmt = d => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
         const params = {
+            subject: `Quote Request — ${this.config.camper.name} · ${fmt(this.state.checkIn)} → ${fmt(this.state.checkOut)}`,
             camper: this.config.camper.name,
             customer_email: email,
             customer_name:  this.$('.qw-name').value.trim()  || '(not provided)',
             customer_phone: this.$('.qw-phone').value.trim() || '(not provided)',
+            name:  this.$('.qw-name').value.trim()  || '(not provided)',
+            email: email,
             check_in:  fmt(this.state.checkIn),
             check_out: fmt(this.state.checkOut),
             total_nights:    totals.nights.total,

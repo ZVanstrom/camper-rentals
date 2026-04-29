@@ -10,7 +10,9 @@
       "mcp__playwright__browser_evaluate",
       "WebSearch",
       "WebFetch(domain:www.hometownrvbrockway.com)",
-      "WebFetch(domain:www.familyrvusa.com)"
+      "WebFetch(domain:www.familyrvusa.com)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_snapshot"
     ]
   }
 }

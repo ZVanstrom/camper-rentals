@@ -1,5 +1,6 @@
 /* ── RESET & VARIABLES ── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+[hidden] { display: none !important; }
 :root {
     --primary: #1a3a2f;
     --accent:  #d97706;
