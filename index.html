@@ -455,6 +455,71 @@
             transform: translateY(-2px);
         }
 
+        /* Process */
+        .process { background: #f1f5f9; }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            background: white;
+            border-radius: 14px;
+            padding: 1.75rem 1.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            border-top: 4px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .process-step-num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .process-step h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .process-step-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            border-radius: 20px;
+            background: #f8fafc;
+            color: var(--gray);
+            border: 1px solid #e2e8f0;
+            width: fit-content;
+            margin-top: auto;
+        }
+        .process-step-badge img {
+            width: 13px;
+            height: 13px;
+            display: block;
+            flex-shrink: 0;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
@@ -465,22 +530,8 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <a href="#" class="logo">Red River Camper Co.</a>
-        <ul class="nav-links">
-            <li class="nav-dropdown">
-                <a href="#campers">Our Campers</a>
-                <div class="dropdown-menu">
-                    <a href="salem-26dbud.html">2025 Salem 26DBUD</a>
-                    <a href="salem-32bhds.html">2025 Salem 32BHDS</a>
-                    <a href="grey-wolf-26rr.html">2021 Grey Wolf Cherokee 26RR</a>
-                </div>
-            </li>
-            <li><a href="#location">Location</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#instant-quote" class="nav-cta">Book Now</a></li>
-        </ul>
-    </nav>
+    <nav data-quote="#instant-quote"></nav>
+    <script src="js/nav.js"></script>
 
     <!-- Hero -->
     <section class="hero">
@@ -496,7 +547,7 @@
     <!-- Instant Quote -->
     <section id="instant-quote">
         <h2 class="section-title">Get an Instant Quote</h2>
-        <p class="section-subtitle">Choose a camper to get started or keep scrolling to learn more about our fleet.</p>
+        <p class="section-subtitle">Choose a camper to get started. Fill in your dates and details, and we'll reach out to confirm availability and lock in your booking.</p>
 
         <div class="iq-picker">
             <div class="iq-card" data-camper="26dbud" data-name="2025 Salem 26DBUD">
@@ -525,6 +576,8 @@
         <div id="iq-widget-wrap" hidden>
             <div id="iq-widget"></div>
         </div>
+
+        <p class="iq-submit-note">When you submit the quote form, it goes directly to the Red River Camper Co. team. We'll follow up by email, phone, or text depending on your preference to confirm availability and finalize your booking.</p>
     </section>
 
     <!-- Campers -->
@@ -623,7 +676,7 @@
                     <li>Miguel's Pizza (a local legend)</li>
                     <li>Nada Tunnel & scenic drives</li>
                 </ul>
-                <p style="margin-top: 1.2rem;"><strong>🏕️ Setup Service Available:</strong> We offer full camper setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Stanton — just steps from great coffee, trails, and everything the Gorge has to offer. Ask us about delivery & setup pricing!</p>
+                <p style="margin-top: 1.2rem;"><strong>🏕️ Setup Service Available:</strong> We offer full camper setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Slade — just steps from great coffee, trails, and everything the Gorge has to offer. Ask us about delivery & setup pricing!</p>
             </div>
             <div class="location-map">
                 <iframe src="https://maps.google.com/maps?q=37.7903,-83.7025&z=11&t=k&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -639,7 +692,7 @@
         <div class="faq-list">
             <div class="faq-item">
                 <h3>Delivery?</h3>
-                <p>No truck needed! We offer full delivery and setup service. We'll take care of drop-off, leveling, water/propane fill, slide-outs, black-tank dump, and pick-up in your delivery cost. We deliver to a location of your choosing at $2.50 per mile (round-trip) with a minimum charge of $100.</p>
+                <p>No truck needed! We offer full delivery and setup service. We'll take care of drop-off, leveling, water/propane fill, slide-outs, black-tank dump, and pick-up in your delivery cost. We deliver up to 150 miles to a location of your choosing at $2.50 per mile (round-trip) with a minimum charge of $100.</p>
             </div>
             <div class="faq-item">
                 <h3>Can I pickup the camper?</h3>
@@ -679,18 +732,58 @@
         </div>
     </section>
 
-    <!-- CTA -->
-    <section id="book" class="cta">
-        <h2>Ready for Your Adventure?</h2>
-        <p>Book your camper today and start planning your Red River Gorge getaway.</p>
-        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 1.25rem 1.75rem; max-width: 480px; margin: 0 auto 3rem;">
-            <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem;">💰 Skip the platform, save big.</p>
-            <p style="font-size: 0.9rem; opacity: 0.85; margin-bottom: 0.75rem;">Book directly with us and save <strong>30%+</strong> — same camper, no platform fees.</p>
-            <a href="mailto:booking@red-river-campers.com" style="display: inline-block; background: white; color: var(--primary); font-weight: 600; font-size: 0.9rem; padding: 0.6rem 1.4rem; border-radius: 6px; text-decoration: none; transition: opacity 0.2s;">Email Us to Book Direct →</a>
-            <p style="margin-top: 0.85rem; font-size: 0.88rem; opacity: 0.75;">or call <a href="tel:+12602059145" style="color: white; text-decoration: underline;">(260) 205-9145</a></p>
+    <!-- Process -->
+    <section id="process" class="process">
+        <h2 class="section-title">Our Booking Process</h2>
+        <p class="section-subtitle">Once you've sent a quote request and we've confirmed availability, here's what happens next.</p>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="process-step-num">Step 1</div>
+                <h3>📋 Trip Details</h3>
+                <p>We'll send a short Google Form to collect your campground location, tow vehicle info, and anything else we need to get you set up perfectly.</p>
+                <span class="process-step-badge">
+                    <img src="https://cdn.simpleicons.org/googleforms/673AB7" alt="Google Forms">
+                    <span style="color:#673AB7;">Google Forms</span>
+                </span>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">Step 2</div>
+                <h3>🪪 ID Verification</h3>
+                <p>We use Stripe Identity to verify both your identity and ours before anything is finalized, keeping both sides protected.</p>
+                <span class="process-step-badge">
+                    <img src="https://cdn.simpleicons.org/stripe/635BFF" alt="Stripe">
+                    <span style="color:#635BFF;">Stripe Identity</span>
+                </span>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">Step 3</div>
+                <h3>📄 Contract Signing</h3>
+                <p>We'll send a rental agreement via PandaDoc for secure digital signing. No printing needed; it takes just a few minutes to complete.</p>
+                <span class="process-step-badge">
+                    <img src="https://logo.clearbit.com/pandadoc.com" alt="PandaDoc">
+                    <span style="color:#33D27E;">PandaDoc</span>
+                </span>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">Step 4</div>
+                <h3>💳 Invoice & Payment</h3>
+                <p>You'll receive a Stripe invoice with payment due 14 days before your rental. A $250 refundable security deposit is required if paying less than 2 weeks before your trip.</p>
+                <span class="process-step-badge">
+                    <img src="https://cdn.simpleicons.org/stripe/635BFF" alt="Stripe">
+                    <span style="color:#635BFF;">Stripe Invoicing</span>
+                </span>
+            </div>
         </div>
-        <div class="platform-links-wrapper">
-            <span class="platform-links-label">View our Fleet on the platforms</span>
+        <div style="text-align:center;margin-top:2.5rem;display:flex;flex-direction:column;gap:0.6rem;align-items:center;">
+            <p style="font-size:0.88rem;color:var(--gray);">🛡️ All rentals are covered under our commercial RV insurance through <strong style="color:var(--dark);">Modern Family / MBA Rental Insurance</strong>.</p>
+            <p style="font-size:0.88rem;color:var(--gray);display:flex;align-items:center;gap:0.4rem;justify-content:center;flex-wrap:wrap;">
+                <img src="https://cdn.simpleicons.org/stripe/635BFF" width="13" height="13" alt="Stripe" style="flex-shrink:0;">
+                Security deposits are held via <strong style="color:var(--dark);">Stripe preauthorization</strong> and will be forfeited if a booking is cancelled 7 days or fewer before the rental start date.
+            </p>
+        </div>
+        <div class="platform-links-wrapper" style="margin-top:2.5rem;">
+            <span class="platform-links-label" style="color:var(--gray);">View our Fleet on the platforms</span>
             <div class="platform-links">
                 <a href="https://rvshare.com/rvs/details/1743822" target="_blank" class="platform-btn">View on RVShare</a>
                 <a href="https://www.outdoorsy.com/pro/4970674" target="_blank" class="platform-btn">View on Outdoorsy</a>

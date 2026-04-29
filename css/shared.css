@@ -290,6 +290,7 @@ section { padding: 4rem 2rem; }
 .iq-card-info { padding: 0.65rem 0.85rem 0.75rem; }
 .iq-card-name { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
 .iq-card-price { font-size: 0.78rem; color: var(--accent); font-weight: 600; }
+.iq-submit-note { text-align: center; color: var(--gray); font-size: 0.9rem; margin-top: 1.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
 
 /* ── QUOTE WIDGET ── */
 .quote-widget-section { background: linear-gradient(135deg, var(--primary) 0%, #2d5a47 100%); padding: 4rem 2rem; }
@@ -331,6 +332,7 @@ section { padding: 4rem 2rem; }
     .qw-customer-fields { grid-template-columns: 1fr 1fr; }
     .qw-customer-fields .qw-email { grid-column: 1 / -1; }
 }
+.qw-pref-field { margin-bottom: 0.9rem; }
 .qw-send-btn { width: 100%; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; padding: 0.9rem 1.5rem; background: var(--accent); color: white; border: 2px solid #b45309; border-radius: 8px; cursor: pointer; transition: background 0.2s; }
 .qw-send-btn:hover { background: #b45309; }
 .qw-status { margin-top: 0.75rem; font-size: 0.9rem; min-height: 1.2em; text-align: center; color: var(--gray); }

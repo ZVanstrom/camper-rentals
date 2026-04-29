@@ -25,7 +25,7 @@
 class QuoteWidget {
     constructor(config) {
         this.config = config;
-        this.state = { checkIn: null, checkOut: null, mode: 'delivery', address: null, miles: null, addons: {} };
+        this.state = { checkIn: null, checkOut: null, mode: 'delivery', address: null, miles: null, addons: {}, contactPref: { phone: false, text: false, email: false } };
         if (this.config.addons) {
             this.config.addons.forEach(a => { this.state.addons[a.id] = false; });
         }
@@ -90,6 +90,14 @@ class QuoteWidget {
                         <input type="text"  class="qw-input qw-name"  placeholder="Name (optional)">
                         <input type="tel"   class="qw-input qw-phone" placeholder="Phone (optional)">
                     </div>
+                    <div class="qw-field qw-pref-field">
+                        <label class="qw-label">Preferred contact method <span style="font-weight:400;color:#94a3b8;font-size:0.85em;">(optional)</span></label>
+                        <div class="qw-addons">
+                            <button type="button" class="qw-addon-btn qw-pref-btn" data-pref="phone">📞 Phone</button>
+                            <button type="button" class="qw-addon-btn qw-pref-btn" data-pref="text">💬 Text</button>
+                            <button type="button" class="qw-addon-btn qw-pref-btn" data-pref="email">📧 Email</button>
+                        </div>
+                    </div>
                     <button type="button" class="qw-send-btn">Send Me This Quote →</button>
                     <p class="qw-status"></p>
                 </div>
@@ -119,6 +127,13 @@ class QuoteWidget {
                 this.state.addons[id] = !this.state.addons[id];
                 btn.classList.toggle('active', this.state.addons[id]);
                 this.update();
+            });
+        });
+        this.container.querySelectorAll('.qw-pref-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const pref = btn.dataset.pref;
+                this.state.contactPref[pref] = !this.state.contactPref[pref];
+                btn.classList.toggle('active', this.state.contactPref[pref]);
             });
         });
         this.$('.qw-send-btn').addEventListener('click', () => this.sendEmail());
@@ -264,7 +279,10 @@ class QuoteWidget {
         const nights = this.calculateNights();
         if (!nights) return null;
         const { weeknightRate, weekendRate, towInsurancePerDay = 0 } = this.config.camper;
-        const nightsSubtotalFull = nights.week * weeknightRate + nights.weekend * weekendRate;
+        const minimumApplied = nights.total < 3;
+        const nightsSubtotalFull = minimumApplied
+            ? 3 * weeknightRate
+            : nights.week * weeknightRate + nights.weekend * weekendRate;
         let discountRate = 0, discountLabel = null;
         if (nights.total >= 14)      { discountRate = 0.15; discountLabel = '15% extended stay discount'; }
         else if (nights.total === 7) { discountRate = 0.10; discountLabel = '10% weekly discount'; }
@@ -273,7 +291,7 @@ class QuoteWidget {
         let deliverySubtotal = 0, deliveryDetail = null;
         let towInsuranceSubtotal = 0;
         if (this.state.mode === 'delivery') {
-            if (this.state.miles == null) return { nights, nightsSubtotalFull, nightsSubtotal, discountRate, discountLabel, discountAmount, awaitingDelivery: true };
+            if (this.state.miles == null) return { nights, nightsSubtotalFull, nightsSubtotal, minimumApplied, discountRate, discountLabel, discountAmount, awaitingDelivery: true };
             const raw = this.state.miles * this.config.delivery.ratePerMile;
             const min = this.config.delivery.minimum;
             deliverySubtotal = Math.round(Math.max(raw, min));
@@ -286,7 +304,7 @@ class QuoteWidget {
         const subtotal = Math.round(nightsSubtotal + deliverySubtotal + towInsuranceSubtotal + addonsSubtotal);
         const tax = Math.round(subtotal * 0.06);
         const total = Math.round(subtotal + tax);
-        return { nights, nightsSubtotalFull, nightsSubtotal, discountRate, discountLabel, discountAmount, deliverySubtotal, deliveryDetail, towInsuranceSubtotal, addonLines, addonsSubtotal, subtotal, tax, total };
+        return { nights, nightsSubtotalFull, nightsSubtotal, minimumApplied, discountRate, discountLabel, discountAmount, deliverySubtotal, deliveryDetail, towInsuranceSubtotal, addonLines, addonsSubtotal, subtotal, tax, total };
     }
 
     update() {
@@ -300,7 +318,8 @@ class QuoteWidget {
             const parts = [];
             if (nights.week > 0)    parts.push(`${nights.week} weeknight${nights.week !== 1 ? 's' : ''}`);
             if (nights.weekend > 0) parts.push(`${nights.weekend} weekend night${nights.weekend !== 1 ? 's' : ''}`);
-            nightCount.textContent = `${nights.total} night${nights.total !== 1 ? 's' : ''} (${parts.join(', ')})`;
+            const base = `${nights.total} night${nights.total !== 1 ? 's' : ''} (${parts.join(', ')})`;
+            nightCount.textContent = nights.total < 3 ? `${base} · 3-night minimum applies` : base;
         } else {
             nightCount.textContent = '';
         }
@@ -316,8 +335,12 @@ class QuoteWidget {
         prompt.style.display = 'none';
         const { weeknightRate, weekendRate } = this.config.camper;
         const lines = [];
-        if (totals.nights.week > 0)    lines.push(`<div class="qw-line"><span>${totals.nights.week} weeknight${totals.nights.week !== 1 ? 's' : ''} × $${weeknightRate}</span><span>$${(totals.nights.week * weeknightRate).toLocaleString()}</span></div>`);
-        if (totals.nights.weekend > 0) lines.push(`<div class="qw-line"><span>${totals.nights.weekend} weekend night${totals.nights.weekend !== 1 ? 's' : ''} × $${weekendRate}</span><span>$${(totals.nights.weekend * weekendRate).toLocaleString()}</span></div>`);
+        if (totals.minimumApplied) {
+            lines.push(`<div class="qw-line"><span>3-night minimum <small>(3 × $${weeknightRate})</small></span><span>$${totals.nightsSubtotalFull.toLocaleString()}</span></div>`);
+        } else {
+            if (totals.nights.week > 0)    lines.push(`<div class="qw-line"><span>${totals.nights.week} weeknight${totals.nights.week !== 1 ? 's' : ''} × $${weeknightRate}</span><span>$${(totals.nights.week * weeknightRate).toLocaleString()}</span></div>`);
+            if (totals.nights.weekend > 0) lines.push(`<div class="qw-line"><span>${totals.nights.weekend} weekend night${totals.nights.weekend !== 1 ? 's' : ''} × $${weekendRate}</span><span>$${(totals.nights.weekend * weekendRate).toLocaleString()}</span></div>`);
+        }
         if (totals.discountAmount > 0) lines.push(`<div class="qw-line qw-discount"><span>${totals.discountLabel}</span><span>-$${totals.discountAmount.toLocaleString()}</span></div>`);
         if (this.state.mode === 'delivery') {
             const dd = totals.deliveryDetail;
@@ -366,6 +389,7 @@ class QuoteWidget {
             customer_email: email,
             customer_name:  this.$('.qw-name').value.trim(),
             customer_phone: this.$('.qw-phone').value.trim(),
+            contact_preference: Object.entries(this.state.contactPref).filter(([,v]) => v).map(([k]) => k.charAt(0).toUpperCase() + k.slice(1)).join(', ') || 'Not specified',
             name:  this.$('.qw-name').value.trim(),
             email: email,
             check_in:  fmt(this.state.checkIn),
