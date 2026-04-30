@@ -284,8 +284,8 @@ class QuoteWidget {
         const actualNightsCost = nights.week * weeknightRate + nights.weekend * weekendRate;
         const nightsSubtotalFull = actualNightsCost + minimumNightsAdded * weekendRate;
         let discountRate = 0, discountLabel = null;
-        if (nights.total >= 14)      { discountRate = 0.15; discountLabel = '15% extended stay discount'; }
-        else if (nights.total === 7) { discountRate = 0.10; discountLabel = '10% weekly discount'; }
+        if (nights.total >= 14)     { discountRate = 0.15; discountLabel = '15% extended stay discount'; }
+        else if (nights.total >= 7) { discountRate = 0.10; discountLabel = '10% weekly discount'; }
         const discountAmount = Math.round(nightsSubtotalFull * discountRate);
         const nightsSubtotal = nightsSubtotalFull - discountAmount;
         let deliverySubtotal = 0, deliveryDetail = null;

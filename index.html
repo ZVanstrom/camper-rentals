@@ -418,6 +418,16 @@
             color: var(--gray);
             font-size: 0.95rem;
         }
+        .process-disclaimers {
+            margin-top: 2.5rem; text-align: center; display: flex;
+            flex-direction: column; gap: 0.6rem; align-items: center;
+        }
+        .process-disclaimers p {
+            font-size: 0.88rem; color: var(--gray); margin: 0;
+            max-width: 560px; line-height: 1.6;
+        }
+        .process-disclaimers img { vertical-align: middle; margin-right: 3px; }
+        .process-disclaimers strong { color: var(--dark); }
 
         /* CTA */
         .cta {
@@ -659,31 +669,6 @@
         </div>
     </section>
 
-    <!-- Location -->
-    <section id="location">
-        <h2 class="section-title">Location</h2>
-        <p class="section-subtitle">Perfectly positioned near the Red River Gorge for easy access to all the best outdoor activities.</p>
-
-        <div class="location-content">
-            <div class="location-text">
-                <h3>Based in Stanton, KY: Gateway to the Red River Gorge</h3>
-                <p>Our campers are stored right in Stanton, minutes from everything the Red River Gorge has to offer:</p>
-                <ul class="location-features">
-                    <li>World-class rock climbing at the Red</li>
-                    <li>100+ miles of hiking trails</li>
-                    <li>Natural Bridge State Park</li>
-                    <li>Swimming holes & cliff jumping</li>
-                    <li>Miguel's Pizza (a local legend)</li>
-                    <li>Nada Tunnel & scenic drives</li>
-                </ul>
-                <p style="margin-top: 1.2rem;"><strong>🏕️ Setup Service Available:</strong> We offer full camper setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Slade — just steps from great coffee, trails, and everything the Gorge has to offer. Ask us about delivery & setup pricing!</p>
-            </div>
-            <div class="location-map">
-                <iframe src="https://maps.google.com/maps?q=37.7903,-83.7025&z=11&t=k&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
     <!-- FAQ -->
     <section id="faq" class="faq">
         <h2 class="section-title">Frequently Asked Questions</h2>
@@ -700,8 +685,8 @@
             </div>
             <div class="faq-item">
                 <h3>What's included with the rental?</h3>
-                <div style="column-count: 2; column-gap: 2rem; margin-top: 0.75rem;">
-                    <ul style="list-style: disc; padding-left: 1.25rem; color: var(--gray); line-height: 2; break-inside: avoid;">
+                <div class="faq-included-list">
+                    <ul style="list-style: disc; padding-left: 1.25rem; color: var(--gray); line-height: 2;">
                         <li>Basic kitchen supplies</li>
                         <li>Bedding &amp; pillows <span style="font-size: 0.85rem; color: #999; font-weight: 400;">(for all sleeping areas)</span></li>
                         <li>Outdoor chairs, sidetable, rug</li>
@@ -775,12 +760,9 @@
                 </span>
             </div>
         </div>
-        <div style="text-align:center;margin-top:2.5rem;display:flex;flex-direction:column;gap:0.6rem;align-items:center;">
-            <p style="font-size:0.88rem;color:var(--gray);">🛡️ All rentals are covered under our commercial RV insurance through <strong style="color:var(--dark);">Modern Family / MBA Rental Insurance</strong>.</p>
-            <p style="font-size:0.88rem;color:var(--gray);display:flex;align-items:center;gap:0.4rem;justify-content:center;flex-wrap:wrap;">
-                <img src="https://cdn.simpleicons.org/stripe/635BFF" width="13" height="13" alt="Stripe" style="flex-shrink:0;">
-                Security deposits are held via <strong style="color:var(--dark);">Stripe preauthorization</strong> and will be forfeited if a booking is cancelled 7 days or fewer before the rental start date.
-            </p>
+        <div class="process-disclaimers">
+            <p>🛡️ All rentals are covered under our commercial RV insurance through <strong>Modern Family / MBA Rental Insurance</strong>.</p>
+            <p><img src="https://cdn.simpleicons.org/stripe/635BFF" width="13" height="13" alt="Stripe"> Security deposits are held via <strong>Stripe preauthorization</strong> and will be forfeited if a booking is cancelled 7 days or fewer before the rental start date.</p>
         </div>
         <div class="platform-links-wrapper" style="margin-top:2.5rem;">
             <span class="platform-links-label" style="color:var(--gray);">View our Fleet on the platforms</span>
@@ -788,6 +770,31 @@
                 <a href="https://rvshare.com/rvs/details/1743822" target="_blank" class="platform-btn">View on RVShare</a>
                 <a href="https://www.outdoorsy.com/pro/4970674" target="_blank" class="platform-btn">View on Outdoorsy</a>
                 <a href="#" target="_blank" class="platform-btn">View on GoodSam</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section id="location">
+        <h2 class="section-title">Location</h2>
+        <p class="section-subtitle">Perfectly positioned near the Red River Gorge for easy access to all the best outdoor activities.</p>
+
+        <div class="location-content">
+            <div class="location-text">
+                <h3>Based in Stanton, KY: Gateway to the Red River Gorge</h3>
+                <p>Our campers are stored right in Stanton, minutes from everything the Red River Gorge has to offer:</p>
+                <ul class="location-features">
+                    <li>World-class rock climbing at the Red</li>
+                    <li>100+ miles of hiking trails</li>
+                    <li>Natural Bridge State Park</li>
+                    <li>Swimming holes & cliff jumping</li>
+                    <li>Miguel's Pizza (a local legend)</li>
+                    <li>Nada Tunnel & scenic drives</li>
+                </ul>
+                <p style="margin-top: 1.2rem;"><strong>🏕️ Setup Service Available:</strong> We offer full camper setup at the <a href="https://www.danielboonecoffeeshop.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Daniel Boone Coffee House RV Parking</a> in Slade — just steps from great coffee, trails, and everything the Gorge has to offer. Ask us about delivery & setup pricing!</p>
+            </div>
+            <div class="location-map">
+                <iframe src="https://maps.google.com/maps?q=37.7903,-83.7025&z=11&t=k&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>

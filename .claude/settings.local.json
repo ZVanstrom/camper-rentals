@@ -12,7 +12,10 @@
       "WebFetch(domain:www.hometownrvbrockway.com)",
       "WebFetch(domain:www.familyrvusa.com)",
       "mcp__playwright__browser_click",
-      "mcp__playwright__browser_snapshot"
+      "mcp__playwright__browser_snapshot",
+      "Bash(python3 -m http.server 8888)",
+      "Bash(echo \"started: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8888/index.html)"
     ]
   }
 }

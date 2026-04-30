@@ -31,6 +31,11 @@ nav {
     z-index: 100;
 }
 .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary); text-decoration: none; letter-spacing: -0.01em; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.875rem; letter-spacing: 0.01em; transition: color 0.15s; }
 .nav-links a:hover { color: var(--accent); }
@@ -179,6 +184,7 @@ section { padding: 4rem 2rem; }
 .description-content p { color: #0f2218; font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
 .description-content ul { margin: 1rem 0 1.5rem 1.5rem; }
 .description-content li { color: var(--dark); font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.5rem; }
+.faq-included-list { column-count: 2; column-gap: 2rem; margin-top: 0.75rem; }
 .highlight-box { background: var(--light); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 2rem 0; border-radius: 8px; }
 .highlight-box p { color: var(--dark); margin-bottom: 0.5rem; }
 
@@ -356,10 +362,38 @@ footer a { color: var(--accent); text-decoration: none; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    nav { flex-wrap: wrap; }
+    .nav-hamburger { display: flex; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; align-items: flex-start; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 0.6rem; margin-top: 0.5rem; }
+    nav.nav-open .nav-links { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 0.6rem 0; font-size: 0.95rem; }
+    .nav-cta { display: inline-block; margin-top: 0.25rem; text-align: center; }
+
+    /* Our Campers sub-dropdown on mobile */
+    .nav-dropdown:hover .dropdown-menu { display: none; }
+    .nav-dropdown > a::after { content: " ▾"; }
+    .nav-dropdown.open > a::after { content: " ▴"; }
+    .nav-dropdown .dropdown-menu {
+        display: none; position: static; top: auto; left: auto;
+        transform: none; box-shadow: none; border: none; border-radius: 0;
+        padding: 0; background: none; min-width: 0; backdrop-filter: none;
+        -webkit-backdrop-filter: none; z-index: auto;
+    }
+    .nav-dropdown.open .dropdown-menu { display: block; }
+    .nav-dropdown .dropdown-menu a { padding: 0.45rem 0 0.45rem 1rem; font-size: 0.85rem; color: var(--gray) !important; border-bottom: none; }
+    .nav-dropdown .dropdown-menu::before { display: none; }
+
     .specs-grid { grid-template-columns: repeat(2, 1fr); }
     .features-grid { grid-template-columns: 1fr; }
     .carousel-slide img { height: 260px; }
     .carousel-btn.prev { left: 4px; }
     .carousel-btn.next { right: 4px; }
+
+    /* What's included — single column on mobile */
+    .faq-included-list { column-count: 1 !important; }
+
+    /* Process disclaimers — stack on mobile */
+    .process-disclaimers { flex-direction: column; gap: 0.75rem; }
+    .process-disclaimers p { text-align: left; }
 }
