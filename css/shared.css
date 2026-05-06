@@ -339,6 +339,14 @@ section { padding: 4rem 2rem; }
     .qw-customer-fields .qw-email { grid-column: 1 / -1; }
 }
 .qw-pref-field { margin-bottom: 0.9rem; }
+.qw-code-bar { border-top: 1px solid #e2e8f0; padding-top: 1.25rem; margin-bottom: 1.25rem; }
+.qw-code-row { display: flex; gap: 0.5rem; }
+.qw-code-row .qw-input { flex: 1; }
+.qw-code-btn { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 0.65rem 1rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+.qw-code-btn:hover { background: #2d5a47; }
+.qw-code-status { font-size: 0.82rem; margin: 0.4rem 0 0; min-height: 1.1em; }
+.qw-code-status.success { color: #16a34a; }
+.qw-code-status.error { color: #dc2626; }
 .qw-send-btn { width: 100%; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; padding: 0.9rem 1.5rem; background: var(--accent); color: white; border: 2px solid #b45309; border-radius: 8px; cursor: pointer; transition: background 0.2s; }
 .qw-send-btn:hover { background: #b45309; }
 .qw-status { margin-top: 0.75rem; font-size: 0.9rem; min-height: 1.2em; text-align: center; color: var(--gray); }
