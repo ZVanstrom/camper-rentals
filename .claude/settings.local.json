@@ -25,7 +25,10 @@
       "Bash(xargs kill *)",
       "Bash(python3 -m http.server 8765)",
       "Bash(curl -s http://localhost:8765/index.html)",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(grep -n \"From \\\\$1\" /Users/zak/Desktop/red-river-campers/camper_rentals/crag_college/index.html)",
+      "Bash(grep -n \"From \\\\\\\\\\\\$\\\\|150\\\\|175\\\\|200\\\\|price-tag\\\\|card-price\" /Users/zak/Desktop/red-river-campers/camper_rentals/crag_college/index.html)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
